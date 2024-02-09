@@ -8,7 +8,6 @@
             position: absolute;
         }
     }
-   
     @media (max-width:768px) {
         .hidate {
             display: block !important;           
@@ -55,7 +54,7 @@
                             </a>
                         </span> 
                         @endauth
-                       
+                    
                     </span> 
                 </div>
                     
