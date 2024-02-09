@@ -171,7 +171,8 @@ trait UserTrait{
         try {
             if(auth()->user()->opt_verified == 0){
                 // Generate otp code
-                $code = str_pad(rand(0, 99999), 5, '0', STR_PAD_LEFT);
+                // $code = str_pad(rand(0, 99999), 5, '0', STR_PAD_LEFT);
+                $code = 12345;
     
                 // Save into the database
                 User::where('id', auth()->user()->id)->update([
@@ -184,7 +185,7 @@ trait UserTrait{
                     'phone'=> '26'.auth()->user()->phone,
                 ];
                 
-                $this->send_with_server($data);
+                // $this->send_with_server($data);
                 
                 // Then redirect the user to go and verify
                 return redirect()->route('otp');
