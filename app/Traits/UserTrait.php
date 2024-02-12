@@ -185,7 +185,7 @@ trait UserTrait{
                     'phone'=> '26'.auth()->user()->phone,
                 ];
                 
-                // $this->send_with_server($data);
+                $this->send_with_server($data);
                 
                 // Then redirect the user to go and verify
                 return redirect()->route('otp');
