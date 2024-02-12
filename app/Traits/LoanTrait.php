@@ -44,8 +44,7 @@ trait LoanTrait{
     }
 
     public function get_loan_current_stage($id){
-        return LoanStatus::with('status')->where('loan_product_id', $id)
-                        ->where('state', 'current')->first();
+        return LoanStatus::with('status')->where('loan_product_id', $id)->first();
     }
 
     public function getLoanRequests($type){

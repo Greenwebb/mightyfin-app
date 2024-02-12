@@ -173,4 +173,7 @@ class User extends Authenticatable
     public function uploads(){
         return $this->hasMany(UserFile::class);
     }
+    public function tickets(){
+        return $this->belongsTo(Ticket::class);
+    }
 }

@@ -25,7 +25,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-xl-4 col-lg-4 col-md-3 col-sm-6 col-6">
-                    <div class="logo"> <a href="{{ route('welcome') }}"> <img src="{{ asset('public/web/images/logo.png') }}" alt=""> </a> </div>
+                    <div class="logo"> <a href="{{ route('welcome') }}"> 
+                        <img src="{{ asset('public/web/images/logo.png') }}" alt=""> </a> </div>
                 </div>
                 <div class="col-xl-8 col-lg-8 col-md-9 col-sm-12 col-12">
                     <div class="quick-info"> 

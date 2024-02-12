@@ -94,7 +94,7 @@
                             <select
                                 name="id_type"
                                 class="form-control"
-                                {{-- wire:model.defer="state.id_type" --}}
+                                wire:model.defer="state.id_type"
                                 >  
                                 <option {{ auth()->user()->id_type == null ? 'selected' : ''}} value="">-- Choose --</option>
                                 <option {{ auth()->user()->id_type == 'NRC' ? 'selected' : ''}} value="NRC">NRC</option>

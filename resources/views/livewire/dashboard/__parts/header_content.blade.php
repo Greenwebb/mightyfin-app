@@ -15,7 +15,16 @@
                                         $capitalizedRouteName = ucwords($formattedRouteName);
                                     @endphp
                             
-                                    <p>{{ $capitalizedRouteName }}</p>
+                                    <p>
+                                        @switch($capitalizedRouteName)
+                                            @case('Profile.show')
+                                                My Profile
+                                                @break
+                                            @default
+                                            {{ $capitalizedRouteName }}
+                                        @endswitch
+                                        
+                                    </p>
                                 @endif</h1>
                             </div>
 

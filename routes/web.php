@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\OTPController;
 use App\Http\Controllers\LoanApplicationController;
 use App\Http\Controllers\LoanProductController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\TicketController;
 use App\Http\Livewire\AboutPage;
 use App\Http\Livewire\AlreadyExistPage;
 use App\Http\Livewire\CareerPage;
@@ -190,6 +191,9 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
 
     // ------- Loan Continue Completion
     Route::post('continue-loan', [LoanApplicationController::class, 'continue_loan'])->name('continue-loan');
+    
+    // -------Ticket
+    Route::resource('tickets', TicketController::class);
 
 });
 

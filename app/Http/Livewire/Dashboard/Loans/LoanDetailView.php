@@ -33,15 +33,9 @@ class LoanDetailView extends Component
         $this->loan = $this->get_loan_details($this->loan_id);
         $this->loan_product = $this->get_loan_product($this->loan->loan_product_id);
         $this->loan_stage = $this->get_loan_current_stage($this->loan->loan_product_id);
-    
-        if (auth()->user()->hasRole('user')) {
-            // return view('livewire.dashboard.loans.loan-app-hrdetail-view')
-            return view('livewire.dashboard.loans.loan-detail-app-view')
-            ->layout('layouts.dashboard');
-        }else{
-            return view('livewire.dashboard.loans.loan-detail-view')
-            ->layout('layouts.admin');
-        }
+        
+        return view('livewire.dashboard.loans.loan-detail-app-view')
+        ->layout('layouts.dashboard');
     }
     
     public function setLoanID($id){

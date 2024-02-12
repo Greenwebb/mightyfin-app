@@ -1,5 +1,4 @@
 <div class="content-body">
-@dd($loan)
     <div class="container @role('user') @else mt-4 @endrole">
         <div class="row ">
             <div class="col-xxl-12 col-xl-12 col-lg-12">
@@ -127,7 +126,7 @@
                                 @if ($loan->user->profile_photo_path)
                                     <img src="{{ '../public/'.Storage::url($loan->user->profile_photo_path) }}" alt=""/>
                                 @else
-                                    <img src="https://thumbs.dreamstime.com/b/default-avatar-profile-image-vector-social-media-user-icon-potrait-182347582.jpg" alt=""/>
+                                    <img width="300" src="https://thumbs.dreamstime.com/b/default-avatar-profile-image-vector-social-media-user-icon-potrait-182347582.jpg" alt=""/>
                                 @endif
                             </div>
                         </div>
