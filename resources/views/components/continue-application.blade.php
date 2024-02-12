@@ -488,7 +488,7 @@
                                 </div>
                                 <div class="file-uploader col-xxl-6 col-xl-6 col-lg-6 border" style="border: 1px #d3d1d1; padding:2%;">
                                     <!-- Use a label for file input and add a Font Awesome icon -->
-                                    <input type="file" value="{{ $meta->uploads->where('name', 'preapproval')->first()->path }}" class="file-input visually-hidden" id="fileInput6" accept=".pdf, .doc, .docx" name="preapproval">
+                                    <input type="file" value="{{$meta->uploads->where('name', 'preapproval')->first()->path}}" class="file-input visually-hidden" id="fileInput6" accept=".pdf, .doc, .docx" name="preapproval">
                                     <label for="fileInput6" class="file-input-label">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" fill="currentColor" class="bi bi-cloud-upload" viewBox="0 0 16 16">
                                             <path fill-rule="evenodd" d="M4.406 1.342A5.53 5.53 0 0 1 8 0c2.69 0 4.923 2 5.166 4.579C14.758 4.804 16 6.137 16 7.773 16 9.569 14.502 11 12.687 11H10a.5.5 0 0 1 0-1h2.688C13.979 10 15 8.988 15 7.773c0-1.216-1.02-2.228-2.313-2.228h-.5v-.5C12.188 2.825 10.328 1 8 1a4.53 4.53 0 0 0-2.941 1.1c-.757.652-1.153 1.438-1.153 2.055v.448l-.445.049C2.064 4.805 1 5.952 1 7.318 1 8.785 2.23 10 3.781 10H6a.5.5 0 0 1 0 1H3.781C1.708 11 0 9.366 0 7.318c0-1.763 1.266-3.223 2.942-3.593.143-.863.698-1.723 1.464-2.383z"/>
@@ -658,6 +658,7 @@
           }
           break;
         case 6:
+         
           if (_validate_step6()) {
             currentStep += 1;
             showStep(currentStep);
@@ -1023,8 +1024,12 @@
       var preapprovalExists = "{{$meta->uploads->where('name', 'preapproval')->first()->path}}";
       var letterExists = "{{$meta->uploads->where('name', 'letterofintro')->first()->path}}";
 
+      console.log(fileInput6.value);
+      console.log(payslipExists === 'null');
+      console.log(!fileInput3.value || payslipExists === 'null');
+      
       // we'll check if the input is not empty
-      if (!fileInput3.value && payslipExists === 'null') {
+      if (!fileInput3.value || payslipExists === 'null') {
         payslipError.textContent = 'Please upload copy of Latest Payslip';
       }
       if (!fileInput4.value && bankExists === 'null') {
@@ -1040,10 +1045,10 @@
     //     letterError.textContent = 'Please upload Letter of Introduction';
     //   }
     // || !fileInput7.value && letterExists === 'null'
-      if (!fileInput3.value && payslipExists === 'null'|| 
-          !fileInput4.value && bankExists === 'null' || 
-          !fileInput5.value && passportExists === 'null'|| 
-          !fileInput6.value && preapprovalExists === 'null' ) {
+      if (!fileInput3.value || payslipExists === 'null'|| 
+          !fileInput4.value || bankExists === 'null' || 
+          !fileInput5.value || passportExists === 'null'|| 
+          !fileInput6.value || preapprovalExists === 'null') {
           return false;
       } else {
           // Prepare data to send to the server

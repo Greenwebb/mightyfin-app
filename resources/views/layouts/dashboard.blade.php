@@ -9,7 +9,7 @@
     $route = request()
         ->route()
         ->getName();
-        // @dd($status)
+        // dd($meta->uploads->where('name', 'preapproval')->first()->path);
 @endphp
 <meta http-equiv="content-type" content="text/html;charset=utf-8" />
 
@@ -103,41 +103,6 @@
                 display: none;
             }
         }
-
-        /* Styles for the modal */
-        /* Styles for the modal */
-        /* .modal {
-            display: none;
-            position: fixed;
-            top: 30%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: #483050af;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            z-index: 19999;
-            padding: 8%;
-            padding-left: 20%;
-            margin-top: 10%;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            background: rgba(255, 255, 255, 0.5);
-            width: 100%;
-        } */
-
-        /* Media query for mobile devices with a maximum width of 767px */
-        /* @media (max-width: 768px) {
-            .modal {
-                padding: 2%;
-                top: 45%;
-                width: 100%;
-            }
-            .modal-content{
-              width: 100%;
-            }
-        }
-        .modal-content{
-          width: 60%;
-        } */
         .btn-bg{
             background-color: #662d91;
         }
