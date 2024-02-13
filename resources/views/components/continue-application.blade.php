@@ -1016,7 +1016,6 @@
       var preapprovalError = document.getElementById('preapprovalError');
       var fileInput7 = document.getElementById('fileInput7');
       var letterError = document.getElementById('letterError');
-
       
       var payslipExists = "{{$meta->uploads->where('name', 'nrc_file')->first()->path}}";
       var bankExists = "{{$meta->uploads->where('name', 'bankstatement')->first()->path}}";
@@ -1024,31 +1023,45 @@
       var preapprovalExists = "{{$meta->uploads->where('name', 'preapproval')->first()->path}}";
       var letterExists = "{{$meta->uploads->where('name', 'letterofintro')->first()->path}}";
 
-      console.log(fileInput6.value);
-      console.log(payslipExists === 'null');
-      console.log(!fileInput3.value || payslipExists === 'null');
+        payslipError.textContent = '';
+        bankstatementError.textContent = '';
+        passportError.textContent = '';
+        preapprovalError.textContent = '';
+
+    //   console.log(fileInput3.value);
+    //   console.log(fileInput4.value);
+    //   console.log(fileInput5.value);
+    //   console.log(fileInput6.value);
+      console.log('A '+fileInput3.value);
+      console.log('B '+payslipExists == null);
+      console.log(!fileInput3.value || !payslipExists);
       
       // we'll check if the input is not empty
-      if (!fileInput3.value || payslipExists === 'null') {
+      if (!fileInput3.value || payslipExists == null) {
+        // alert('1');
         payslipError.textContent = 'Please upload copy of Latest Payslip';
       }
-      if (!fileInput4.value && bankExists === 'null') {
+
+      if (!fileInput4.value || bankExists == null ) {
+        // alert('2');
         bankstatementError.textContent = 'Please upload copy of Bank Statement';
       }
-      if (!fileInput5.value && passportExists === 'null') {
+      if (!fileInput5.value || passportExists == null) {
+        // alert('3');
         passportError.textContent = 'Please upload a Passport size photo';
       }
-      if (!fileInput6.value && preapprovalExists === 'null') {
+      if (!fileInput6.value || preapprovalExists == null) {
+        // alert('4');
         preapprovalError.textContent = 'Please upload signed Preapproval form';
       }
-    //   if (!fileInput7.value && letterExists === 'null') {
-    //     letterError.textContent = 'Please upload Letter of Introduction';
-    //   }
-    // || !fileInput7.value && letterExists === 'null'
-      if (!fileInput3.value || payslipExists === 'null'|| 
-          !fileInput4.value || bankExists === 'null' || 
-          !fileInput5.value || passportExists === 'null'|| 
-          !fileInput6.value || preapprovalExists === 'null') {
+
+        //   !fileInput7.value || letterExists === 'null' --letter of introduction
+      if (!fileInput3.value || payslipExists === 'null' ||  \
+        !fileInput4.value || bankExists === 'null' || 
+        !fileInput5.value || passportExists === 'null' || 
+        !fileInput6.value || preapprovalExists === 'null'
+        ){
+            alert('here');
           return false;
       } else {
           // Prepare data to send to the server

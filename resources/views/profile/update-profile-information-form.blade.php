@@ -5,7 +5,7 @@
     <div>
         <!-- Profile Photo -->
         <div class="row">
-            <div class="col-xxl-6 col-xl-6 col-lg-6">
+            <div class="col-xxl-4 col-xl-4 col-lg-4">
                 <div class="">
                     
                     <div  class="col-xxl-12">
@@ -31,8 +31,11 @@
                     <button class="btn btn-xs" style="background-color:blueviolet" id="openModalBtn">Change Profile Picture</button>
                 </div>
             </div>
-            
+            @livewire('profile.update-password-form')
         </div>
+        <br>
+        
+
         <br>
         <div class="mt-4">
             <h4 class="card-title">Personal Information</h4>

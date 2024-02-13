@@ -67,16 +67,12 @@
                 </div>
                 <div id="twoFactor" class="">
                   <div class="row">
-                    <div class="col-xxl-12 col-xl-12 col-lg-12">
-                      @if (Laravel\Fortify\Features::canUpdateProfileInformation())
-                          @livewire('profile.update-password-form')
-                      @endif
-                    </div>
-                    <div class="col-xxl-12 col-xl-12 col-lg-12">
+              
+                    {{-- <div class="col-xxl-12 col-xl-12 col-lg-12">
                         @if (Laravel\Fortify\Features::canUpdateProfileInformation())
                             @livewire('profile.logout-other-browser-sessions-form')
                         @endif
-                    </div>
+                    </div> --}}
                   </div>
                 </div>
                 <div id="browserSession" class="">

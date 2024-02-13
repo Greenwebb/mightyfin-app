@@ -16,7 +16,11 @@ class OTPController extends Controller
      */
     public function index()
     {
-        return view('auth.otp_verification');
+        if(auth()->user()->opt_verified == 0){
+            return view('auth.otp_verification');
+        }else{
+            return redirect()->route('dashboard');
+        }
     }
 
     /**
