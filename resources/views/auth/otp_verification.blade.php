@@ -187,7 +187,7 @@
                                         src="{{ asset('/public/web/images/otp-icon.png') }}" alt="verification"></p>
                                 <p style="color:#792db8" class="text-muted text-center mb-4">Please enter the OTP (one
                                     time password) to verify your account. A code has been sent to <span
-                                        class="text-dark text-4">{{ '+260 '.auth()->user()->phone }}</span></p>
+                                        class="text-dark text-4">{{ '+26 '.auth()->user()->phone }}</span></p>
                                 <p class="text-dark text-center fw-600 mb-3">Enter 5 digit code</p>
                                 <form id="otp-screen" method="POST" class="text-white" action="{{ route('otp') }}">
                                     @csrf

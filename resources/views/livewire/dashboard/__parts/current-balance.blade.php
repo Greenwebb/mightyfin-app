@@ -1,15 +1,31 @@
 @if ($my_loan !== null)
     <h5><b style="color: rgb(90, 80, 99)">Current Loan</b></h5>
-    <div class="col-xxl-4 col-xl-12 ">
+    <div class="col-xxl-4 col-xl-12 " style="color: rgb(150, 247, 65)">
         <a title="View more details" href="{{ route('loan-details', $my_loan->id) }}">
-            <div class="card" style="background-color: rgb(255, 208, 0)">
+            <div class="card" 
+                @switch($my_loan->status)
+                    @case(1)
+                        style="background-color: rgb(150, 247, 65)"
+                        @break
+                    @case(2)
+                        style="background-color: rgb(255, 208, 0)"
+                        @break
+                    @case(3)
+                        style="background-color: rgb(180, 28, 28)"
+                        @break
+                    @case(4)
+                        style="background-color: rgb(71, 67, 71)"
+                        @break
+                    @default
+                        style="background-color: rgb(71, 67, 71)"
+                @endswitch
+            >
                 <div class="card-body">
                     <div class="row">
                         <div class="col-xl-8 col-lg-8">
                             <p>{{ $my_loan->type }} Repayment</p>
                             <h3> <strong><b>K{{ App\Models\Loans::loan_balance($my_loan->id) }}</b></strong> </h3>
                             <small>
-
                                 @if ($my_loan->status == 1)
                                     @php
                                         if ($my_loan->loan->final_due_date !== null) {
@@ -23,60 +39,95 @@
                                 @else
                                     State: Processing
                                 @endif
-                                {{-- @php
-                            // Convert the target date/time to a Unix timestamp
-                            $targetTimestamp = strtotime($date_str);
+                                @php
+                                    // Convert the target date/time to a Unix timestamp
+                                    // $targetTimestamp = strtotime($date_str);
 
-                            // Calculate the difference between the target timestamp and the current timestamp
-                            $diff = $targetTimestamp - time();
+                                    // // Calculate the difference between the target timestamp and the current timestamp
+                                    // $diff = $targetTimestamp - time();
 
-                            // Calculate the number of days remaining
-                            $daysRemaining = floor($diff / (60 * 60 * 24));
+                                    // // Calculate the number of days remaining
+                                    // $daysRemaining = floor($diff / (60 * 60 * 24));
 
-                            // Calculate the number of hours remaining
-                            $hoursRemaining = floor(($diff % (60 * 60 * 24)) / (60 * 60));
+                                    // // Calculate the number of hours remaining
+                                    // $hoursRemaining = floor(($diff % (60 * 60 * 24)) / (60 * 60));
 
-                            // Calculate the number of minutes remaining
-                            $minutesRemaining = floor(($diff % (60 * 60)) / 60);
+                                    // // Calculate the number of minutes remaining
+                                    // $minutesRemaining = floor(($diff % (60 * 60)) / 60);
 
-                            // Calculate the number of seconds remaining
-                            $secondsRemaining = $diff % 60;
+                                    // // Calculate the number of seconds remaining
+                                    // $secondsRemaining = $diff % 60;
 
-                        if ($daysRemaining < 0) {
-                            echo "Payback payment is overdue";
-                        }else {
-                            echo "{$daysRemaining} Days  {$hoursRemaining} Hours remaining";
-                        }
-                            // Output the remaining time in a human-readable format
-                            // echo "{$daysRemaining} Days  {$hoursRemaining} Hours {$minutesRemaining} Minutes {$secondsRemaining} Seconds remaining";
-                        @endphp --}}
+                                    // if ($daysRemaining < 0) {
+                                    //     echo "Payback payment is overdue";
+                                    // }else {
+                                    //     echo "{$daysRemaining} Days  {$hoursRemaining} Hours remaining";
+                                    // }
+                                    // Output the remaining time in a human-readable format
+                                    // echo "{$daysRemaining} Days  {$hoursRemaining} Hours {$minutesRemaining} Minutes {$secondsRemaining} Seconds remaining";
+                                @endphp
                             </small>
                         </div>
                         <div class="col-xl-3 col-lg-3">
                             <div class="card">
                                 <button class="btn btn-light text-primary p-4"
                                     style="box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;">
-                                    @if ($my_loan->status == 1)
-                                    <strong>Repay Now
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                            fill="currentColor" class="bi bi-check-square" viewBox="0 0 16 16">
-                                            <path
-                                                d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z" />
-                                            <path
-                                                d="M10.97 4.97a.75.75 0 0 1 1.071 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.235.235 0 0 1 .02-.022z" />
-                                        </svg>
-                                    </strong>
-                                    @else
-                                    <strong>Pending
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                            fill="currentColor" class="bi bi-check-square" viewBox="0 0 16 16">
-                                            <path
-                                                d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z" />
-                                            <path
-                                                d="M10.97 4.97a.75.75 0 0 1 1.071 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.235.235 0 0 1 .02-.022z" />
-                                        </svg>
-                                    </strong>
-                                    @endif
+                                    @switch($my_loan->status)
+                                        @case(1)
+                                            <strong>Repay Now
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    fill="currentColor" class="bi bi-check-square" viewBox="0 0 16 16">
+                                                    <path
+                                                        d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z" />
+                                                    <path
+                                                        d="M10.97 4.97a.75.75 0 0 1 1.071 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.235.235 0 0 1 .02-.022z" />
+                                                </svg>
+                                            </strong>
+                                            @break
+                                        @case(2)
+                                            <strong>Processing
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    fill="currentColor" class="bi bi-check-square" viewBox="0 0 16 16">
+                                                    <path
+                                                        d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z" />
+                                                    <path
+                                                        d="M10.97 4.97a.75.75 0 0 1 1.071 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.235.235 0 0 1 .02-.022z" />
+                                                </svg>
+                                            </strong>
+                                            @break
+                                        @case(3)
+                                            <strong>Declined
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    fill="currentColor" class="bi bi-check-square" viewBox="0 0 16 16">
+                                                    <path
+                                                        d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z" />
+                                                    <path
+                                                        d="M10.97 4.97a.75.75 0 0 1 1.071 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.235.235 0 0 1 .02-.022z" />
+                                                </svg>
+                                            </strong>
+                                            @break
+                                        @case(4)
+                                            <strong>Defaulted
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    fill="currentColor" class="bi bi-check-square" viewBox="0 0 16 16">
+                                                    <path
+                                                        d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z" />
+                                                    <path
+                                                        d="M10.97 4.97a.75.75 0 0 1 1.071 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.235.235 0 0 1 .02-.022z" />
+                                                </svg>
+                                            </strong>
+                                            @break
+                                        @default
+                                            <strong>Maintenance
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    fill="currentColor" class="bi bi-check-square" viewBox="0 0 16 16">
+                                                    <path
+                                                        d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z" />
+                                                    <path
+                                                        d="M10.97 4.97a.75.75 0 0 1 1.071 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.235.235 0 0 1 .02-.022z" />
+                                                </svg>
+                                            </strong>
+                                    @endswitch
                                 </button>
                             </div>
                         </div>
