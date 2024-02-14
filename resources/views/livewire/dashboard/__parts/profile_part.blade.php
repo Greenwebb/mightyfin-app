@@ -64,7 +64,10 @@
             <i class="bi bi-person"></i>Profile
         </a>
         <a href="{{ route('payments') }}" class="dropdown-item">
-            <i class="bi bi-wallet"></i>Repayments
+            <i class="bi bi-wallet"></i>Payments
+        </a>
+        <a href="{{ route('transactions') }}" class="dropdown-item">
+            <i class="bi bi-wallet"></i>Transactions
         </a>
         <a href="{{ route('settings') }}" class="dropdown-item">
             <i class="bi bi-gear"></i> Settings

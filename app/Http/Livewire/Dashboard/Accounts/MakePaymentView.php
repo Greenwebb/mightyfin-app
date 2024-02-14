@@ -20,7 +20,7 @@ class MakePaymentView extends Component
 
     public function render()
     {
-        $this->authorize('view accounting');
+        
         $this->loans = Loans::with('application')
                         ->where('closed', 0)
                         ->get();

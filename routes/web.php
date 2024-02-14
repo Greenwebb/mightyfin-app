@@ -55,6 +55,8 @@ use App\Http\Livewire\Dashboard\SiteSettings\SystemSettings;
 use App\Http\Livewire\Dashboard\SiteSettings\TestPage;
 use App\Http\Livewire\Dashboard\SiteSettings\UpdateSetting;
 use App\Http\Livewire\Dashboard\SiteSettings\ViewSetting;
+use App\Http\Livewire\Dashboard\TransactionItem;
+use App\Http\Livewire\Dashboard\TransactionView;
 use App\Http\Livewire\FaqPage;
 use App\Http\Livewire\GuidelinePage;
 use App\Http\Livewire\KYCView;
@@ -152,6 +154,8 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     Route::get('loan-statements', LoanStatementView::class)->name('loan-statements');
     Route::get('my-wallet-account', LoanWalletView::class)->name('loan-wallet');
     Route::get('transactions', MakePaymentView::class)->name('make-payment');
+    Route::get('my-transactions', TransactionView::class)->name('transactions');
+    Route::get('transaction-item', TransactionItem::class)->name('transaction.item');
 
     // ----- Reports
     Route::get('reports/loan-report', ReportView::class)->name('loan-report');
