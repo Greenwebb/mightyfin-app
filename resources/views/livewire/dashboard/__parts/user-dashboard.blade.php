@@ -316,7 +316,7 @@
                         <div class="row">
                             <div class="col-xxl-12 col-xl-4 col-lg-6">
                                 <div class="price-widget">
-                                    <a href="price-details.html">
+                                    <a href="#">
                                         <div class="price-content">
                                             <div class="icon-title">
                                                 <span class="badge badge-primary">
@@ -337,7 +337,7 @@
                             </div>
                             <div class="col-xxl-12 col-xl-4 col-lg-6">
                                 <div class="price-widget">
-                                    <a href="price-details.html">
+                                    <a href="#">
                                         <div class="price-content">
                                             <div class="icon-title">
                                                 <span class="badge badge-primary">
@@ -360,7 +360,7 @@
                             </div>
                             <div class="col-xxl-12 col-xl-4 col-lg-6">
                                 <div class="price-widget">
-                                    <a href="price-details.html">
+                                    <a href="#">
                                         <div class="price-content">
                                             <div class="icon-title">
                                                 <span class="badge badge-primary">
@@ -383,7 +383,7 @@
                             </div>
                             <!-- <div class="col-xxl-6 col-xl-4 col-lg-6">
                                     <div class="price-widget">
-                                        <a href="price-details.html">
+                                        <a href="#">
                                             <div class="price-content">
                                                 <div class="icon-title">
                                                     <i class="cc USDT"></i>
@@ -397,7 +397,7 @@
                                 </div>
                                 <div class="col-xxl-6 col-xl-4 col-lg-6">
                                     <div class="price-widget">
-                                        <a href="price-details.html">
+                                        <a href="#">
                                             <div class="price-content">
                                                 <div class="icon-title">
                                                     <i class="cc USDT"></i>
@@ -411,7 +411,7 @@
                                 </div>
                                 <div class="col-xxl-6 col-xl-4 col-lg-6">
                                     <div class="price-widget">
-                                        <a href="price-details.html">
+                                        <a href="#">
                                             <div class="price-content">
                                                 <div class="icon-title">
                                                     <i class="cc USDT"></i>
