@@ -745,8 +745,8 @@
                 var svgElement = svgContainer.firstElementChild;
 
                 // Set the desired width and height
-                var newWidth = 20; // Replace with your desired width
-                var newHeight = 20; // Replace with your desired height
+                var newWidth = 40; // Replace with your desired width
+                var newHeight = 40; // Replace with your desired height
 
                 // Check if the SVG element exists
                 if (svgElement) {
