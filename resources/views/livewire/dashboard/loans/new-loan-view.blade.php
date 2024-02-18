@@ -371,7 +371,7 @@
                                         <div class="col">
                                             <label class="card text-center h-70 py-2 {{ $p->status !==1 ? 'disabled-card':'' }}">
                                                 <input type="radio" name="loan_type" value="{{ $p->id }}" class="d-none">
-                                                <small class="text-sm" style="font-size:9px">
+                                                <small class="text-xs" style="font-size:3px">
                                                     {!! $p->icon !!}
                                                 </small>
                                                 <div class="card-body px-0">
