@@ -1056,12 +1056,11 @@
       }
 
         //   !fileInput7.value || letterExists === 'null' --letter of introduction
-      if (!fileInput3.value || payslipExists === 'null' ||  \
+      if (!fileInput3.value || payslipExists === 'null' ||  
         !fileInput4.value || bankExists === 'null' || 
         !fileInput5.value || passportExists === 'null' || 
         !fileInput6.value || preapprovalExists === 'null'
         ){
-            alert('here');
           return false;
       } else {
           // Prepare data to send to the server
