@@ -371,7 +371,7 @@
                                         <div class="col">
                                             <label class="card text-center h-70 py-2 {{ $p->status !==1 ? 'disabled-card':'' }}">
                                                 <input type="radio" name="loan_type" value="{{ $p->id }}" class="d-none">
-                                                <small class="text-xs" style="font-size:3px">
+                                                <small class="text-xs svg-container" style="font-size: 3px">
                                                     {!! $p->icon !!}
                                                 </small>
                                                 <div class="card-body px-0">
@@ -736,7 +736,31 @@
             //     document.getElementById('loanProductInterest').textContent = data.interest;
             //     // Add more lines for other details as needed.
             // }
+            // Get all elements with the specified class
+            var svgContainers = document.querySelectorAll('.svg-container');
 
+            // Loop through each container
+            svgContainers.forEach(function (svgContainer) {
+                // Find the first child which should be the SVG element
+                var svgElement = svgContainer.firstElementChild;
+
+                // Set the desired width and height
+                var newWidth = 20; // Replace with your desired width
+                var newHeight = 20; // Replace with your desired height
+
+                // Check if the SVG element exists
+                if (svgElement) {
+                    // Traverse the SVG's child elements to set width and height attributes
+                    Array.from(svgElement.children).forEach(function (child) {
+                        child.setAttribute('width', newWidth);
+                        child.setAttribute('height', newHeight);
+                    });
+
+                    // Set the width and height attributes of the SVG itself
+                    svgElement.setAttribute('width', newWidth);
+                    svgElement.setAttribute('height', newHeight);
+                }
+            });
         </script>
         
     </div>
