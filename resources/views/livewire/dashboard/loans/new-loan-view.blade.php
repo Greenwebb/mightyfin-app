@@ -371,7 +371,7 @@
                                         <div class="col">
                                             <label class="card text-center h-70 py-2">
                                                 <input type="radio" name="loan_type" value="{{ $p->id }}" class="d-none">
-                                                <span class="text-sm">
+                                                <span class="text-sm" style="font-size:12px">
                                                     {!! $p->icon !!}
                                                 </span>
                                                 <div class="card-body px-0">
