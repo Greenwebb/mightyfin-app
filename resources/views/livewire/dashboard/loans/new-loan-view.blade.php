@@ -369,11 +369,11 @@
                                     <div class="row row-cols-2 row-cols-lg-3 g-4 pb-2">
                                         @forelse ($this->get_all_loan_products() as $p)
                                         <div class="col">
-                                            <label class="card text-center h-70 py-2">
+                                            <label class="card text-center h-70 py-2 {{ $p->status !==1 ? 'disabled-card':'' }}">
                                                 <input type="radio" name="loan_type" value="{{ $p->id }}" class="d-none">
-                                                <span class="text-sm" style="font-size:12px">
+                                                <small class="text-sm" style="font-size:9px">
                                                     {!! $p->icon !!}
-                                                </span>
+                                                </small>
                                                 <div class="card-body px-0">
                                                     <h5 class="card-title title-binding">{{ $p->name }}</h5>
                                                 </div>
