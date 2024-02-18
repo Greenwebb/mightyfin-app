@@ -560,7 +560,7 @@
                                 </div>
                                 <div class="form-group col-md-6">
                                     <p>Payback Amount: <b>K {{ App\Models\Application::payback($activeLoan->amount, $activeLoan->repayment_plan)}}</b> </p>
-                                    <p>Phone Number: <b>{{ intval($activeLoan->phone)  }}</b> </p>
+                                    <p>Phone Number: <b>{{ auth()->user()->phone }}</b> </p>
                                     <p>Email: <b>{{ auth()->user()->email }}</b> </p>
                                 </div>
                             </div>
