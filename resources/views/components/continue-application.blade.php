@@ -54,7 +54,7 @@
                                         </select>
                                         <input
                                             id="phone"
-                                            value="{{ intval($activeLoan->phone)  }}"
+                                            value="{{ auth()->user()->phone  }}"
                                             type="text"
                                             data-mask='0000 000 000'
                                             name="phone"
