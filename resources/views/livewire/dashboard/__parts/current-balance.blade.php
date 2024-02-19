@@ -17,7 +17,7 @@
                         style="background-color: rgb(71, 67, 71)"
                         @break
                     @default
-                        style="background-color: rgb(150, 247, 65)"
+                        style="background-color: rgb(255, 208, 0)"
                 @endswitch
             >
                 <div class="card-body">
