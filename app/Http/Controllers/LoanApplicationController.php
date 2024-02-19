@@ -86,7 +86,7 @@ class LoanApplicationController extends Controller
                 'lname'=> $form['lname'],
                 'fname'=> $form['name'],
                 'mname'=> $form['mname'],
-                'phone2'=> $form['phone2'],
+                'phone'=> $form['phone'],
                 'email'=> $form['email'] ?? '',
                 'password' => 'mighty4you',
                 'terms' => 'accepted'
