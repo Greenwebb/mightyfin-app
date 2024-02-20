@@ -146,6 +146,9 @@ class Application extends Model
     //     // }
     // }
 
+    public static function loanProduct($id){
+        return LoanProduct::where('id', $id)->first();
+    }
     // Pending for approval
     public static function currentApplication(){
         return Application::where('user_id', auth()->user()->id)

@@ -7,8 +7,6 @@
                 <h4 class="modal-title text-center ">
                     <b>Loan Completion Form</b>
                 </h4>
-
-                {{-- <span style="cursor:pointer" onclick="closeModal()">x</span> --}}
             </div>
             <div class="modal-body row" style="overflow-y: scroll; overflow-x:hidden; height:63vh">
                 <div class="col-xxl-3 col-xl-3 col-lg-3" >
@@ -32,12 +30,30 @@
                                 <h5>Profile Details</h5>
                             </div>
                             <br>
-                            <div class="row mb-4">
-                                <div class="col-md-6">
-                                    <label for="dob">D.O.B</label>
-                                    <input value="{{auth()->user()->dob}}" type="date" class="form-control" id="dob" name="dob">
-                                    <small id="jobDOBError" class="text-danger"></small>
-                                </div>
+                            <div class="row mb-4"><div class="col-md-6">
+                                <label for="dob">D.O.B</label>
+                                <input type="date" class="form-control" id="dob" name="dob">
+                                <small id="jobDOBError" class="text-danger"></small>
+                            </div>
+                            
+                            <script>
+                                // Function to format the date as YYYY-MM-DD
+                                function formatDate(date) {
+                                    var year = date.getFullYear();
+                                    var month = ('0' + (date.getMonth() + 1)).slice(-2);
+                                    var day = ('0' + date.getDate()).slice(-2);
+                                    return `${year}-${month}-${day}`;
+                                }
+                            
+                                // Calculate the date 16 years ago
+                                var currentDate = new Date();
+                                var dobDate = new Date(currentDate.getFullYear() - 16, currentDate.getMonth(), currentDate.getDate());
+                            
+                                // Set the default value for the date input
+                                var dobInput = document.getElementById('dob');
+                                dobInput.value = formatDate(dobDate);
+                            </script>
+                            
                                 <div class="form-group col-md-6">
                                     <label for="jobTitle">JOB TITLE</label>
                                     <input value="{{ auth()->user()->occupation ?? auth()->user()->jobTitle }}"  type="text" class="form-control" id="jobTitleInput" placeholder="eg. Teacher" name="jobTitle">
@@ -551,10 +567,10 @@
                             <div class="col-lg-12 row">
                                 <div class="form-group col-md-6">
                                     <p>Loan Amount: <b>K{{ $activeLoan->amount }}</b> </p>
-                                    <p>Loan Type: <b>{{ $activeLoan->type }} Loan</b> </p>
-                                    <p>Interest rate: <b>21%</b> </p>
-                                    <p>Service Charge:  <b>K3.5</b> </p>
-                                    <p>Repayment Period: <b>{{ $activeLoan->repayment_plan }} Months</b> </p>
+                                    <p>Loan Type: <b>{{ App\Models\Application::loanProduct($activeLoan->type)->name  }} Loan</b> </p>
+                                    <p>Interest rate: <b> {{App\Models\Application::loanProduct($activeLoan->type)->def_loan_interest }} %</b> </p>
+                                    <p>Service Charge:  <b>10%</b> </p>
+                                    <p>Tenure: <b>{{ $activeLoan->repayment_plan }} (Months)</b> </p>
                                     
                                     <input type="hidden" name="final" value="1">
                                 </div>
