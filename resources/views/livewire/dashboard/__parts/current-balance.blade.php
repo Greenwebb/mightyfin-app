@@ -2,7 +2,7 @@
     <h5><b style="color: rgb(90, 80, 99)">Current Loan</b></h5>
     <div class="col-xxl-4 col-xl-12 " style="color: rgb(150, 247, 65)">
         <a title="View more details" href="{{ route('loan-details', $my_loan->id) }}">
-            <div class="card" 
+            <div class="card"
                 @switch($my_loan->status)
                     @case(1)
                         style="background-color: rgb(150, 247, 65)"
@@ -142,14 +142,14 @@
         <div class="row">
             <div class="col-xxl-6 col-xl-6 col-lg-6">
                 <div class="card"
-                    style="height:25vh; background-image: linear-gradient(to right, #792db8, rgb(139, 89, 177)); color:#fff">
+                    style="border-radius:2.5rem; height:25vh; background-image:  linear-gradient(to right, #653092, #9E59F1); color:#fff">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-xxl-8 col-xl-8 col-lg-8 col-md-6 col-sm-6" style="padding-top:8%">
-                                <span class="pb-2"><strong style="color: #ffc800">Apply for a Loan</strong></span>
-                                
+                                <span class="pb-2"><strong style=" color: #ffc800">Apply for a Loan</strong></span>
+
                                 <div class="mt-2">
-                                    <a href="{{ route('new-loan') }}" style="background-color:#fff;" class="btn">
+                                    <a href="{{ route('new-loan') }}" style="border-radius:2rem; background-color:#ffc800;color: #ffffff" class="btn">
                                         <strong>Get a Loan</strong> </a>
                                 </div>
                             </div>
@@ -182,10 +182,10 @@
             </div>
             <div class="col-xxl-6 col-xl-6 col-lg-6">
                 <div class="card"
-                    style="background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8UW4-kylyJg8bj33K3boAIvJ46HbT362BRwF06jStNxZLf2nkni-UDFofFkcvWrHhDqc&usqp=CAU'); 
-                background-position: center center; 
-                background-size: cover; 
-                height:25vh; 
+                    style="background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8UW4-kylyJg8bj33K3boAIvJ46HbT362BRwF06jStNxZLf2nkni-UDFofFkcvWrHhDqc&usqp=CAU');
+                background-position: center center;
+                background-size: cover;
+                height:25vh;
                 position: relative;
                 border-radius:4%;">
 

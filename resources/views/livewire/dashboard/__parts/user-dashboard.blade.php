@@ -139,7 +139,7 @@
         }
     }
 </style>
-<div class="col-12" style="background-image: linear-gradient(to right, #792db8, #912d73); color:#fff">
+<div class="col-12" style="background-image: linear-gradient(to right, #792db8, #912d73);color:#fff;border-bottom-left-radius: 2rem; border-bottom-right-radius: 2rem; color:#fff">
     <div style="margin-top: 0px;" class="content-body">
         <div class="container-fluid">
             <div class="header" style="background: #6d0b6700;position: absolute;top: 26px;">
@@ -154,7 +154,7 @@
                                         <span class="dark"><i class="bi bi-moon"></i></span>
                                         <span class="light"><i class="bi bi-brightness-high"></i></span>
                                     </div>
-                                    
+
                                     @include('livewire.dashboard.__parts.notifcations_part')
                                     @include('livewire.dashboard.__parts.profile_part')
                                 </div>
@@ -235,7 +235,7 @@
                             {{ session('error') }}
                         </div>
                     @else
-                        
+
                     @endif
                 </div>
             </div>
@@ -311,7 +311,7 @@
                       <strong class="text-primary">
                         Wallet Information</strong>
                   </p>
-                   
+
                     <div class="col-xxl-4 col-xl-12">
                         <div class="row">
                             <div class="col-xxl-12 col-xl-4 col-lg-6">
@@ -429,7 +429,7 @@
                       <strong class="text-primary">
                         Loan History</strong>
                   </p>
-                    
+
                     <div class="col-xxl-12 col-xl-12">
                         <div class="card">
                             <div class="card-header">
@@ -516,7 +516,7 @@
                                                 href="{{ route('profile.show', ['view' => 'kyc']) }}">
                                                 <span class="not-verified"><i class="icofont-close-line"></i></span>
                                                 Update Profile (KYC)
-                                                <div data-hint="Please continue to update and upload neccessary 
+                                                <div data-hint="Please continue to update and upload neccessary
                             profile information, to allow quick loan processing and review"
                                                     data-hint-position="top-left"></div>
                                             </a>

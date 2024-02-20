@@ -43,10 +43,10 @@
                             </select>
                         </div>
                     </div>
-                    
+
                     <label class="form-label">Amount</label>
                     <input wire:model.defer="withdraw_amount" type="text" class="form-control mb-3" id="amount" placeholder="ZMW">
-                    
+
                     @if($payment_method === 'Mobile Money')
                         <label class="form-label">Mobile Number</label>
                         <input wire:model.defer="mobile_number" type="text" class="form-control mb-3" id="mobile_num" placeholder="Mobile Money Number">
@@ -224,7 +224,7 @@
                         </div>
                     {{-- <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#applyForLoanNow" id="applyForLoanNow">Apply For a Loan</button>
                          --}}
-                        @include('livewire.dashboard.__parts.loan-application-standalone')  
+                        @include('livewire.dashboard.__parts.loan-application-standalone')
                     @endif
                 @endrole
 
@@ -288,7 +288,7 @@
                             </div>
                         </div>
                         @endcan
-                        
+
                         @can('view loan requests')
                         <div class="card lastest_trans h-auto">
                             <div class="card-header dz-border flex-wrap pb-3">
@@ -300,7 +300,7 @@
                                 <!--list-->
                                 <div class="table-responsive">
                                     <table class="table shadow-hover trans-table border-no dz-border tbl-btn short-one mb-0 ">
-                                        <tbody>                                    
+                                        <tbody>
                                             @forelse($all_loan_requests as $loan)
                                             <tr class="trans-td-list">
                                                 <td>
