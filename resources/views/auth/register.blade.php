@@ -162,25 +162,24 @@
                                     </div>
                                     <form id="form-content" method="POST" class="text-white" action="{{ route('register') }}">
                                         @csrf
-                                        <div style="display: flex; gap:0px; width:100%">
+                                        <div style="display: flex; gap: 0px; width: 100%">
                                             <div class="col-6">
                                                 <label class="text-dark mb-1"><strong>First Name</strong></label>
-                                                <input name="fname" :value="old('fname')" required type="text" class="form-control" placeholder="Your First Name">
+                                                <input name="fname" required type="text" class="form-control" placeholder="Your First Name" value="{{ old('fname') }}">
                                             </div>
                                             <div class="col-6">
                                                 <label class="text-dark mb-1"><strong>Last Name</strong></label>
-                                                <input name="lname" :value="old('lname')" required type="text" class="form-control" placeholder="Your Last Name">
+                                                <input name="lname" required type="text" class="form-control" placeholder="Your Last Name" value="{{ old('lname') }}">
                                             </div>
                                         </div>
                                         <div class="">
                                             <div class="col-12">
                                                 <label class="text-dark mb-1"><strong>Email</strong></label>
-                                                <input name="email" :value="old('email')" required type="email" class="form-control" placeholder="yourname@email.com">
+                                                <input name="email" required type="email" class="form-control" placeholder="yourname@email.com" value="{{ old('email') }}">
                                             </div>
                                             <div class="col-12">
-
                                                 <label class="text-dark mb-1"><strong>Phone</strong></label>
-                                                <input name="phone" :value="old('phone')" required type="phone" class="form-control" minlength="10" maxlength="10" placeholder="097">
+                                                <input name="phone" required type="phone" class="form-control" minlength="10" maxlength="10" placeholder="097" value="{{ old('phone') }}">
                                             </div>
                                             <div class="col-12">
                                                 <label class="text-dark mb-1"><strong>Password</strong></label>
@@ -189,7 +188,7 @@
                                             <div class="text-left px-3 mt-4">
                                                 <button style="background-color:#792db8; box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;" type="submit" class="btn btn-block text-white text-lg">Create Account</button>
                                                 @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
-                                                <div  id="policy" class="form-check text-dark">
+                                                <div id="policy" class="form-check text-dark">
                                                     <input type="checkbox" name="terms" class="form-check-input" id="termsCheckbox" checked>
                                                     <label class="form-check-label font-w400" for="termsCheckbox">By creating an account, you agree to Mighty Finance Solution
                                                         <a target="_blank" href="{{ route('terms') }}" class="underline text-sm text-gray-600 hover:text-gray-900">Terms of Service</a>
@@ -201,6 +200,31 @@
                                             </div>
                                         </div>
                                     </form>
+                                    
+                                    <script>
+                                        // Retrieve values from local storage and set them in the form fields
+                                        document.addEventListener('DOMContentLoaded', function () {
+                                            const form = document.getElementById('form-content');
+                                    
+                                            // Loop through each input field and set its value from local storage if available
+                                            Array.from(form.elements).forEach(function (element) {
+                                                if (element.type !== 'submit' && element.name) {
+                                                    const storedValue = localStorage.getItem(element.name);
+                                                    if (storedValue !== null) {
+                                                        element.value = storedValue;
+                                                    }
+                                                }
+                                            });
+                                    
+                                            // Add an event listener to update local storage when input values change
+                                            form.addEventListener('input', function (event) {
+                                                if (event.target.type !== 'submit' && event.target.name) {
+                                                    localStorage.setItem(event.target.name, event.target.value);
+                                                }
+                                            });
+                                        });
+                                    </script>
+                                    
                                 </div>
                             </div>
                         </div>
