@@ -255,7 +255,7 @@ class LoanApplicationController extends Controller
                 'email'=>  auth()->user()->email,
                 'amount'=> $amount,
                 'gender'=> auth()->user()->gender,
-                'type'=> $form['loan_type'],
+                'loan_product_id'=> $form['loan_type'],
                 'repayment_plan'=> $form['duration'],
                 'personal_loan_type'=> $form['loan_type'],
                 'status' => 0,
