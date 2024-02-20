@@ -54,6 +54,15 @@ trait LoanTrait{
                         ->first();
     }
 
+    public function get_current_loan_status(){
+        return DB::table('loan_statuses')
+        ->join('statuses', 'loan_statuses.status_id', '=', 'statuses.id')
+        ->select('loan_statuses.*', 'statuses.*')
+        ->where('loan_statuses.loan_product_id', 1)
+        ->orderBy('loan_statuses.id', 'asc')
+        ->first()->status;
+    }
+
     public function getLoanRequests($type){
         $userId = auth()->user()->id;
 

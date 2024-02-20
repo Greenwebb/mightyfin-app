@@ -567,14 +567,15 @@
                             <div class="col-lg-12 row">
                                 <div class="form-group col-md-6">
                                     <p>Loan Amount: <b>K{{ $activeLoan->amount }}</b> </p>
-                                    <p>Loan Type: <b>{{ App\Models\Application::loanProduct($activeLoan->type)->name  }} Loan</b> </p>
-                                    <p>Interest rate: <b> {{App\Models\Application::loanProduct($activeLoan->type)->def_loan_interest }} %</b> </p>
+                                    <p>Loan Type: <b>{{ App\Models\Application::loanProduct($activeLoan->loan_product_id)->name  }} Loan</b> </p>
+                                    <p>Interest rate: <b> {{App\Models\Application::loanProduct($activeLoan->loan_product_id)->def_loan_interest }} %</b> </p>
                                     <p>Service Charge:  <b>10%</b> </p>
                                     <p>Tenure: <b>{{ $activeLoan->repayment_plan }} (Months)</b> </p>
                                     
                                     <input type="hidden" name="final" value="1">
                                 </div>
                                 <div class="form-group col-md-6">
+                                    <p>You will receive: <b>K {{ App\Models\Application::receiveAmount($activeLoan->amount, $activeLoan->repayment_plan)}}</b> </p>
                                     <p>Payback Amount: <b>K {{ App\Models\Application::payback($activeLoan->amount, $activeLoan->repayment_plan)}}</b> </p>
                                     <p>Phone Number: <b>{{ auth()->user()->phone }}</b> </p>
                                     <p>Email: <b>{{ auth()->user()->email }}</b> </p>

@@ -239,6 +239,82 @@ class Application extends Model
     
     }
 
+
+    public static function receiveAmount($principal, $duration, $product_id = null){
+        // 1 month
+        if( $duration == 1){
+            $interest = (($principal * 0.21) * 1) + $principal;
+            return number_format($interest, 2, '.', '');
+        }
+        
+        // 2 months
+        if( $duration == 2 ){
+            $interest = (($principal * 1.2 *  1.1) - $principal) + $principal;
+            return number_format($interest, 2, '.', '');
+        }
+        
+        // 3 months
+        if( $duration == 3){
+            $interest = (($principal * 1.2 * 1.15) - $principal) + $principal;
+            return number_format($interest, 2, '.', '');
+        }
+        
+        // 4 months
+        if( $duration == 4){
+            $interest=(($principal * 1.2 * 1.2) - $principal) + $principal;
+            return number_format($interest, 2, '.', '');
+        }
+        
+        // 5 months
+        if( $duration == 5){
+            $interest = (($principal * 1.2 * 1.25) - $principal) + $principal;
+            return number_format($interest, 2, '.', '');
+        }
+        
+        // 6 months
+        if( $duration == 6){
+            $interest = (($principal * 1.2 * 1.3) - $principal) + $principal;
+            return number_format($interest, 2, '.', '');
+        }
+
+
+        // 7 months
+        if( $duration == 7){
+            $interest = (($principal * 1.2 * 1.35) - $principal) + $principal;
+            return number_format($interest, 2, '.', '');
+        }
+        
+        // 8 months
+        if( $duration == 8){
+            $interest = (($principal * 1.2 * 1.4) - $principal) + $principal;
+            return number_format($interest, 2, '.', '');
+        }
+        
+        // 9 months
+        if( $duration == 9){
+            $interest = (($principal * 1.2 * 1.45) - $principal) + $principal;
+            return number_format($interest, 2, '.', '');
+        }
+        
+        // 10 months
+        if( $duration == 10){
+            $interest = (($principal * 1.2 * 1.5) - $principal) + $principal;
+            return number_format($interest, 2, '.', '');
+        }
+        
+        // 11 months
+        if( $duration == 11){
+            $interest = (($principal * 1.2 * 1.55) - $principal) + $principal;
+            return number_format($interest, 2, '.', '');
+        }
+        
+        // 12 months
+        if( $duration == 12){
+            $interest = (($principal * 1.2 * 1.6) - $principal) + $principal;
+            return number_format($interest, 2, '.', '');
+        }
+    }
+
     public static function interest_amount($principal, $duration){
         // 1 month
         if( $duration == 1){

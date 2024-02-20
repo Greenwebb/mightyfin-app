@@ -85,7 +85,18 @@
                                             </strong>
                                             @break
                                         @case(2)
-                                            <strong>Processing
+                                         
+                                            <strong>
+                                                Processing
+                                                @if($stage !== null)
+                                                    <div class="badge-sm badge-default">
+                                                        {{$stage}}
+                                                    </div>
+                                                @else
+                                                    <div class="badge-sm badge-default">
+                                                        Incomplete KYC
+                                                    </div>
+                                                @endif
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                     fill="currentColor" class="bi bi-check-square" viewBox="0 0 16 16">
                                                     <path
@@ -96,7 +107,17 @@
                                             </strong>
                                             @break
                                         @case(3)
-                                            <strong>Declined
+                                            <strong>
+                                                Declined
+                                                @if($stage !== null)
+                                                    <div class="badge-sm badge-default">
+                                                        {{$stage}}
+                                                    </div>
+                                                @else
+                                                    <div class="badge-sm badge-default">
+                                                        Incomplete KYC
+                                                    </div>
+                                                @endif
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                     fill="currentColor" class="bi bi-check-square" viewBox="0 0 16 16">
                                                     <path
