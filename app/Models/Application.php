@@ -212,9 +212,9 @@ class Application extends Model
         // Assuming $application->created_at is a Carbon instance
         if($application){
             try {
-                $nextDate = $application->created_at->addDays(30);
+                $nextDate = $application->created_at;
         
-                return $nextDate->toFormattedDateString();
+                return $nextDate;
             } catch (\Throwable $th) {
                 return 'No Date';
             }
