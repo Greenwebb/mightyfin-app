@@ -102,10 +102,10 @@ class Loans extends Model
         $loan = Application::where('id', $application_id)->first();
         if($loan->status == 1){
             $paid = Transaction::where('application_id', $application_id)->sum('amount_settled');
-            $payback = Application::payback($loan->amount, $loan->repayment_plan);
+            $payback = Application::payback($loan->amount, $loan->repayment_plan, $loan->loan_product_id);
             return (float)$payback - (float)$paid;
         }else{
-            return Application::payback($loan->amount, $loan->repayment_plan);
+            return Application::payback($loan->amount, $loan->repayment_plan, $loan->loan_product_id);
         }
 
     }

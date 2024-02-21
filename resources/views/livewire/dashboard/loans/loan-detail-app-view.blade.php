@@ -79,7 +79,7 @@
                             >
                             <div class="chart-price-value">
                                 <span>Paying Back</span>
-                                <h5>K {{ App\Models\Application::payback($loan->amount, $loan->repayment_plan) }}</h5>
+                                <h5>K {{ App\Models\Application::payback($loan->amount, $loan->repayment_plan, $loan->loan_product_id) }}</h5>
                             </div>
                             </div>
                         </div>
