@@ -164,7 +164,12 @@
                                     <div class="pt-2">
                                         <ul class="file-list" id="fileList"></ul>
                                         @if ($meta->uploads->where('name', 'nrc_file')->isNotEmpty())
-                                            <p  class="file-list">You uploaded a National ID Copy on {{ $meta->uploads->where('name', 'tpin_file')->first()->created_at->toFormattedDateString() }}</p>
+                                            <p  class="file-list">You uploaded a National ID Copy on 
+                                            {{ 
+                                                $meta->uploads->where('name', 'nrc_file')->first()->created_at != null ?
+                                                $meta->uploads->where('name', 'nrc_file')->first()->created_at->toFormattedDateString() 
+                                            }}
+                                            </p>
                                         @endif
                                     </div>
                                     <small id="nrcFileError" class="text-danger"></small>
@@ -184,7 +189,12 @@
                                     <div class="pt-2">
                                         <ul class="file-list-2" id="fileList-2"></ul>
                                         @if ($meta->uploads->where('name', 'tpin_file')->isNotEmpty())
-                                            <p class="file-list">You uploaded a Tpin Copy on  {{ $meta->uploads->where('name', 'tpin_file')->first()->created_at->toFormattedDateString() }}</p>
+                                            <p class="file-list">You uploaded a Tpin Copy on  
+                                                {{ 
+                                                    $meta->uploads->where('name', 'tpin_file')->first()->created_at != null ?
+                                                    $meta->uploads->where('name', 'tpin_file')->first()->created_at->toFormattedDateString() 
+                                                }}
+                                            </p>
                                         @endif
                                     </div>
                                     <small id="fiileInput2Error" class="text-danger"></small>
@@ -457,7 +467,12 @@
                                     <div class="pt-2">
                                         <ul class="file-list-2" id="fileList-3"></ul>
                                         @if ($meta->uploads->where('name', 'payslip_file')->isNotEmpty())
-                                            <p class="file-list">You uploaded a Payslip Copy on  {{ $meta->uploads->where('name', 'payslip_file')->first()->created_at->toFormattedDateString() }}</p>
+                                            <p class="file-list">You uploaded a Payslip Copy on  
+                                                {{ 
+                                                    $meta->uploads->where('name', 'payslip_file')->first()->created_at != null ?
+                                                    $meta->uploads->where('name', 'payslip_file')->first()->created_at->toFormattedDateString() 
+                                                }}
+                                            </p>
                                         @endif
                                     </div>
                                     <small id="payslipError" class="text-danger"></small>
@@ -477,7 +492,12 @@
                                     <div class="pt-2">
                                         <ul class="file-list-3" id="fileList-4"></ul>
                                         @if ($meta->uploads->where('name', 'bankstatement')->isNotEmpty())
-                                            <p class="file-list">You uploaded a Bank Statement Copy on  {{ $meta->uploads->where('name', 'bankstatement')->first()->created_at->toFormattedDateString() }}</p>
+                                            <p class="file-list">You uploaded a Bank Statement Copy on  
+                                            {{ 
+                                                $meta->uploads->where('name', 'bankstatement')->first()->created_at !== null ? 
+                                                $meta->uploads->where('name', 'bankstatement')->first()->created_at->toFormattedDateString() 
+                                            }}
+                                            </p>
                                         @endif
                                     </div>
                                     <small id="bankstatementError" class="text-danger"></small>
@@ -497,7 +517,12 @@
                                     <div class="pt-2">
                                         <ul class="file-list-4" id="fileList-5"></ul>
                                         @if ($meta->uploads->where('name', 'passport')->isNotEmpty())
-                                            <p class="file-list">You uploaded a Passport Size photo on  {{ $meta->uploads->where('name', 'passport')->first()->created_at->toFormattedDateString() }}</p>
+                                            <p class="file-list">You uploaded a Passport Size photo on  
+                                                {{ 
+                                                    $meta->uploads->where('name', 'passport')->first()->created_at != null ?
+                                                    $meta->uploads->where('name', 'passport')->first()->created_at->toFormattedDateString() 
+                                                }}
+                                            </p>
                                         @endif
                                     </div>
                                     <small id="passportError" class="text-danger"></small>
@@ -517,7 +542,12 @@
                                     <div class="pt-2">
                                         <ul class="file-list-5" id="fileList-6"></ul>
                                         @if ($meta->uploads->where('name', 'preapproval')->isNotEmpty())
-                                            <p class="file-list">You uploaded a Pre-approval form Copy on  {{ $meta->uploads->where('name', 'preapproval')->first()->created_at->toFormattedDateString() }}</p>
+                                            <p class="file-list">You uploaded a Pre-approval form Copy on  
+                                                {{ 
+                                                    $meta->uploads->where('name', 'preapproval')->first()->created_at != null ? 
+                                                    $meta->uploads->where('name', 'preapproval')->first()->created_at->toFormattedDateString() 
+                                                }}
+                                            </p>
                                         @endif
                                     </div>
                                     <small id="preapprovalError" class="text-danger"></small>
@@ -537,7 +567,12 @@
                                     <div class="pt-2">
                                         <ul class="file-list-5" id="fileList-7"></ul>
                                         @if ($meta->uploads->where('name', 'letterofintro')->isNotEmpty())
-                                            <p class="file-list">You uploaded a Letter of Introduction Copy on  {{ $meta->uploads->where('name', 'letterofintro')->first()->created_at->toFormattedDateString() }}</p>
+                                            <p class="file-list">You uploaded a Letter of Introduction Copy on  
+                                                {{ 
+                                                    $meta->uploads->where('name', 'letterofintro')->first()->created_at != null ?
+                                                    $meta->uploads->where('name', 'letterofintro')->first()->created_at->toFormattedDateString() 
+                                                }}
+                                            </p>
                                         @endif
                                     </div>
                                     <small id="letterError" class="text-danger"></small>
