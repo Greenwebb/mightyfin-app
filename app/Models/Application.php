@@ -210,13 +210,16 @@ class Application extends Model
 
     public static function paybackNextDate($application){
         // Assuming $application->created_at is a Carbon instance
-
-        try {
-            $nextDate = $application->created_at->addDays(30);
-    
-            return $nextDate->toFormattedDateString();
-        } catch (\Throwable $th) {
-            return 'No Date';
+        if($application){
+            try {
+                $nextDate = $application->created_at->addDays(30);
+        
+                return $nextDate->toFormattedDateString();
+            } catch (\Throwable $th) {
+                return 'No Date';
+            }
+        }else{
+            return 'No Application';
         }
     }
     
