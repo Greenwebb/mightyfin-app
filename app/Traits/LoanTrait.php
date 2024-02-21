@@ -32,6 +32,7 @@ trait LoanTrait{
             ])->get();
     }
 
+    // Depricated
     public function get_loan_product($id){
         return LoanProduct::where('id', $id)->with([
             'disbursed_by.disbursed_by',
@@ -43,6 +44,32 @@ trait LoanTrait{
             'service_fees.service_charge'
             // 'loan_products.institutions'
         ])->first();
+    }
+
+    public function loan_product($id){
+        return DB::table('loan_products')
+        ->where('id', $id)
+        ->leftJoin('disbursed_by', 'loan_products.disbursed_by_id', '=', 'disbursed_by.id')
+        ->leftJoin('interest_methods', 'loan_products.interest_method_id', '=', 'interest_methods.id')
+        ->leftJoin('interest_types', 'loan_products.interest_type_id', '=', 'interest_types.id')
+        ->leftJoin('loan_accounts', 'loan_products.id', '=', 'loan_accounts.loan_product_id')
+        ->leftJoin('loan_status', 'loan_products.loan_status_id', '=', 'loan_status.id')
+        ->leftJoin('loan_decimal_places', 'loan_products.id', '=', 'loan_decimal_places.loan_product_id')
+        ->leftJoin('service_fees', 'loan_products.id', '=', 'service_fees.loan_product_id')
+        ->leftJoin('loan_products', 'institutions', 'loan_products.id', '=', 'institutions.loan_product_id')
+        ->select(
+            'loan_products.*',
+            'disbursed_by.*',
+            'interest_methods.*',
+            'interest_types.*',
+            'loan_accounts.account_payment',
+            'loan_status.status',
+            'loan_decimal_places.*',
+            'service_fees.service_charge',
+            'institutions.*'
+        )
+        ->first();
+    
     }
 
     public function get_loan_statuses($id){
