@@ -53,7 +53,7 @@
             padding: 0 !important;
         }
     </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
     <link rel="stylesheet" href="{{ asset('public/web/css/form-elements.css') }}">
     <link rel="stylesheet" href="{{ asset('public/web/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('public/web/css/st.css') }}">
@@ -79,7 +79,7 @@
     <script type='text/javascript' src='{{ asset("public/web/js/jquery-jquery-migrate.min.js") }}'></script>
     <script type='text/javascript' src='{{ asset("public/web/js/royal_preloader.min.js") }}'></script>
     <link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://mightyfinance.co.zm?rsd" />
-    <link rel="wlwmanifest" type="application/wlwmanifest+xml" href="wlwmanifest.xml" />
+    <link rel="wlwmanifest" type="application/wlwmanifest+xml" href="wlwmanifest.xml" /> --}}
     <meta name="generator" content="greenwebb" />
 
 
@@ -956,7 +956,7 @@
             color: #fff;
         }
     </style>
-    <?php include 'public/web/components/preloader.php' ?>
+    {{-- <?php include 'public/web/components/preloader.php' ?> --}}
     @include('layouts.menu')
 
     @livewireStyles

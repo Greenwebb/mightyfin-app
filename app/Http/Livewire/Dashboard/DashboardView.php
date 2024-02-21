@@ -16,7 +16,7 @@ class DashboardView extends Component
 {
 
     use EmailTrait, WalletTrait, LoanTrait, UserTrait;
-    public $loan_requests, $loan_request, $all_loan_requests, $my_loan, $wallet;
+    public $loan_requests, $loan_request, $all_loan_requests, $my_loan, $wallet, $stage;
     public $payment_method, $withdraw_amount, $mobile_number, $card_name, $bank_name, $card_number;
 
     public function render()
@@ -24,6 +24,8 @@ class DashboardView extends Component
         $this->isKYCComplete();
         $this->my_loan = $this->getCurrentLoan();
         $this->wallet = $this->getWalletBalance(auth()->user());
+        $this->stage = $this->get_current_loan_status();
+        // dd($this->stage);
         if (auth()->user()->hasRole('user')) {
             $this->VerifyOTP();
             $this->all_loan_requests = Application::where('user_id', auth()->user()->id)->orderBy('created_at', 'desc')->take(5)->get();

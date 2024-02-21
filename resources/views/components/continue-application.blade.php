@@ -567,15 +567,18 @@
                             <div class="col-lg-12 row">
                                 <div class="form-group col-md-6">
                                     <p>Loan Amount: <b>K{{ $activeLoan->amount }}</b> </p>
-                                    <p>Loan Type: <b>{{ App\Models\Application::loanProduct($activeLoan->type)->name  }} Loan</b> </p>
-                                    <p>Interest rate: <b> {{App\Models\Application::loanProduct($activeLoan->type)->def_loan_interest }} %</b> </p>
+                                    <p>Loan Type: <b>{{ App\Models\Application::loanProduct($activeLoan->loan_product_id)->name  }} Loan</b> </p>
+                                    <p>Interest rate: <b> {{App\Models\Application::loanProduct($activeLoan->loan_product_id)->def_loan_interest }} %</b> </p>
                                     <p>Service Charge:  <b>10%</b> </p>
                                     <p>Tenure: <b>{{ $activeLoan->repayment_plan }} (Months)</b> </p>
                                     
                                     <input type="hidden" name="final" value="1">
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <p>Payback Amount: <b>K {{ App\Models\Application::payback($activeLoan->amount, $activeLoan->repayment_plan)}}</b> </p>
+                                    <p>You will receive: <b>K {{ App\Models\Application::receiveAmount($activeLoan->amount, $activeLoan->repayment_plan)}}</b> </p>
+                                    <p>Payback Amount: <b>K {{ App\Models\Application::payback($activeLoan->amount, $activeLoan->repayment_plan, $activeLoan->loan_product_id)}}</b> </p>
+                                    <p>Next Payment Amount: <b>K {{ App\Models\Application::paybackInstallment($activeLoan->amount, $activeLoan->repayment_plan, $activeLoan->loan_product_id)}}</b> </p>
+                                    <p>Next Payment Date: <b> {{ App\Models\Application::paybackNextDate($activeLoan) }}</b> </p>
                                     <p>Phone Number: <b>{{ auth()->user()->phone }}</b> </p>
                                     <p>Email: <b>{{ auth()->user()->email }}</b> </p>
                                 </div>
@@ -802,14 +805,14 @@
       var tpinExists = "{{$meta->uploads->where('name', 'tpin_file')->first()->path}}";
 
       // In this example, we'll check if the input is not empty
-      if (!fileInput.value && nrcExists === 'null') {
+      if (fileInput.value === '' && nrcExists === null) {
         nrcFileError.textContent = 'Please upload copy of national ID';
       }
         //   if (!fileInput2.value && tpinExists === 'null') {
         //     fiileInput2Error.textContent = 'Please upload copy of Tpin';
         //   }
         // !fileInput2.value && tpinExists === 'null' || 
-      if (!fileInput.value && nrcExists === 'null') {
+      if (!fileInput.value && nrcExists === null) {
           return false;
       } else {
   
@@ -1043,39 +1046,31 @@
         bankstatementError.textContent = '';
         passportError.textContent = '';
         preapprovalError.textContent = '';
-
-    //   console.log(fileInput3.value);
-    //   console.log(fileInput4.value);
-    //   console.log(fileInput5.value);
-    //   console.log(fileInput6.value);
-      console.log('A '+fileInput3.value);
-      console.log('B '+payslipExists == null);
-      console.log(!fileInput3.value || !payslipExists);
       
       // we'll check if the input is not empty
-      if (!fileInput3.value || payslipExists == null) {
+      if (!fileInput3.value && payslipExists == null) {
         // alert('1');
         payslipError.textContent = 'Please upload copy of Latest Payslip';
       }
 
-      if (!fileInput4.value || bankExists == null ) {
+      if (!fileInput4.value && bankExists == null ) {
         // alert('2');
         bankstatementError.textContent = 'Please upload copy of Bank Statement';
       }
-      if (!fileInput5.value || passportExists == null) {
+      if (!fileInput5.value && passportExists == null) {
         // alert('3');
         passportError.textContent = 'Please upload a Passport size photo';
       }
-      if (!fileInput6.value || preapprovalExists == null) {
+      if (!fileInput6.value && preapprovalExists == null) {
         // alert('4');
         preapprovalError.textContent = 'Please upload signed Preapproval form';
       }
 
         //   !fileInput7.value || letterExists === 'null' --letter of introduction
-      if (!fileInput3.value || payslipExists === 'null' ||  
-        !fileInput4.value || bankExists === 'null' || 
-        !fileInput5.value || passportExists === 'null' || 
-        !fileInput6.value || preapprovalExists === 'null'
+      if (!fileInput3.value && payslipExists === null ||  
+        !fileInput4.value && bankExists === null || 
+        !fileInput5.value && passportExists === null || 
+        !fileInput6.value && preapprovalExists === null
         ){
           return false;
       } else {

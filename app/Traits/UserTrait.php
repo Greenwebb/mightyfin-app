@@ -169,7 +169,9 @@ trait UserTrait{
 
     public function VerifyOTP(){
         try {
+            
             if(auth()->user()->opt_verified == 0){
+                // dd(auth()->user()->opt_verified == 0);
                 // Generate otp code
                 $code = str_pad(rand(0, 99999), 5, '0', STR_PAD_LEFT);
     
@@ -192,7 +194,7 @@ trait UserTrait{
                 return true;
             }
         } catch (\Throwable $th) {
-            dd($th->getMessage());
+            return true;
         }
     }
     public function send_with_server($data) {

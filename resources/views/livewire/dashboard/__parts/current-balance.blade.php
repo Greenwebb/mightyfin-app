@@ -1,5 +1,6 @@
 @if ($my_loan !== null)
     <h5><b style="color: rgb(90, 80, 99)">Current Loan</b></h5>
+    <h2 class="font-bold"><b>K{{ $my_loan->amount }}</b></h2>
     <div class="col-xxl-4 col-xl-12 " style="color: rgb(150, 247, 65)">
         <a title="View more details" href="{{ route('loan-details', $my_loan->id) }}">
             <div class="card"
@@ -23,7 +24,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-xl-8 col-lg-8">
-                            <p>{{ $my_loan->type }} Repayment</p>
+                            <p><b style="color: #792db8">{{ $my_loan->type }} Repayment</b></p>
                             <h3> <strong><b>K{{ App\Models\Loans::loan_balance($my_loan->id) }}</b></strong> </h3>
                             <small>
                                 @if ($my_loan->status == 1)
@@ -85,7 +86,17 @@
                                             </strong>
                                             @break
                                         @case(2)
-                                            <strong>Processing
+                                            <strong>
+                                                Processing
+                                                @if($stage !== null)
+                                                    <div class="badge-sm badge-default">
+                                                        {{$stage}}
+                                                    </div>
+                                                @else
+                                                    <div class="badge-sm badge-default">
+                                                        Incomplete KYC
+                                                    </div>
+                                                @endif
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                     fill="currentColor" class="bi bi-check-square" viewBox="0 0 16 16">
                                                     <path
@@ -96,7 +107,17 @@
                                             </strong>
                                             @break
                                         @case(3)
-                                            <strong>Declined
+                                            <strong>
+                                                Declined
+                                                @if($stage !== null)
+                                                    <div class="badge-sm badge-default">
+                                                        {{$stage}}
+                                                    </div>
+                                                @else
+                                                    <div class="badge-sm badge-default">
+                                                        Incomplete KYC
+                                                    </div>
+                                                @endif
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                     fill="currentColor" class="bi bi-check-square" viewBox="0 0 16 16">
                                                     <path
@@ -188,8 +209,6 @@
                 height:25vh;
                 position: relative;
                 border-radius:4%;">
-
-                    <!-- Purple Tint Overlay -->
                     <div
                         style="border-radius:2%;position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(102, 45, 145, 0.772);">
                     </div>
