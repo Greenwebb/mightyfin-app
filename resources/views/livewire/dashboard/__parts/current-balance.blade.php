@@ -85,7 +85,6 @@
                                             </strong>
                                             @break
                                         @case(2)
-                                         
                                             <strong>
                                                 Processing
                                                 @if($stage !== null)
@@ -209,8 +208,6 @@
                 height:25vh; 
                 position: relative;
                 border-radius:4%;">
-
-                    <!-- Purple Tint Overlay -->
                     <div
                         style="border-radius:2%;position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(102, 45, 145, 0.772);">
                     </div>
