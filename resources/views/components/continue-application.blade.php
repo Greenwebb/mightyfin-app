@@ -166,8 +166,8 @@
                                         @if ($meta->uploads->where('name', 'nrc_file')->isNotEmpty())
                                             <p  class="file-list">You uploaded a National ID Copy on 
                                             {{ 
-                                                $meta->uploads->where('name', 'nrc_file')->first()->created_at != null ?
-                                                $meta->uploads->where('name', 'nrc_file')->first()->created_at->toFormattedDateString() 
+                                                $meta->uploads->where('name', 'nrc_file')->first() != null ?
+                                                $meta->uploads->where('name', 'nrc_file')->first()->created_at->toFormattedDateString() : ''
                                             }}
                                             </p>
                                         @endif
@@ -191,8 +191,8 @@
                                         @if ($meta->uploads->where('name', 'tpin_file')->isNotEmpty())
                                             <p class="file-list">You uploaded a Tpin Copy on  
                                                 {{ 
-                                                    $meta->uploads->where('name', 'tpin_file')->first()->created_at != null ?
-                                                    $meta->uploads->where('name', 'tpin_file')->first()->created_at->toFormattedDateString() 
+                                                    $meta->uploads->where('name', 'tpin_file')->first() != null ?
+                                                    $meta->uploads->where('name', 'tpin_file')->first()->created_at->toFormattedDateString() : '' 
                                                 }}
                                             </p>
                                         @endif
@@ -469,8 +469,8 @@
                                         @if ($meta->uploads->where('name', 'payslip_file')->isNotEmpty())
                                             <p class="file-list">You uploaded a Payslip Copy on  
                                                 {{ 
-                                                    $meta->uploads->where('name', 'payslip_file')->first()->created_at != null ?
-                                                    $meta->uploads->where('name', 'payslip_file')->first()->created_at->toFormattedDateString() 
+                                                    $meta->uploads->where('name', 'payslip_file')->first() != null ?
+                                                    $meta->uploads->where('name', 'payslip_file')->first()->created_at->toFormattedDateString() : '' 
                                                 }}
                                             </p>
                                         @endif
@@ -494,8 +494,8 @@
                                         @if ($meta->uploads->where('name', 'bankstatement')->isNotEmpty())
                                             <p class="file-list">You uploaded a Bank Statement Copy on  
                                             {{ 
-                                                $meta->uploads->where('name', 'bankstatement')->first()->created_at !== null ? 
-                                                $meta->uploads->where('name', 'bankstatement')->first()->created_at->toFormattedDateString() 
+                                                $meta->uploads->where('name', 'bankstatement')->first() !== null ? 
+                                                $meta->uploads->where('name', 'bankstatement')->first()->created_at->toFormattedDateString() : '' 
                                             }}
                                             </p>
                                         @endif
@@ -519,8 +519,8 @@
                                         @if ($meta->uploads->where('name', 'passport')->isNotEmpty())
                                             <p class="file-list">You uploaded a Passport Size photo on  
                                                 {{ 
-                                                    $meta->uploads->where('name', 'passport')->first()->created_at != null ?
-                                                    $meta->uploads->where('name', 'passport')->first()->created_at->toFormattedDateString() 
+                                                    $meta->uploads->where('name', 'passport')->first() != null ?
+                                                    $meta->uploads->where('name', 'passport')->first()->created_at->toFormattedDateString() : '' 
                                                 }}
                                             </p>
                                         @endif
@@ -544,8 +544,8 @@
                                         @if ($meta->uploads->where('name', 'preapproval')->isNotEmpty())
                                             <p class="file-list">You uploaded a Pre-approval form Copy on  
                                                 {{ 
-                                                    $meta->uploads->where('name', 'preapproval')->first()->created_at != null ? 
-                                                    $meta->uploads->where('name', 'preapproval')->first()->created_at->toFormattedDateString() 
+                                                    $meta->uploads->where('name', 'preapproval')->first() != null ? 
+                                                    $meta->uploads->where('name', 'preapproval')->first()->created_at->toFormattedDateString() :''
                                                 }}
                                             </p>
                                         @endif
@@ -569,8 +569,8 @@
                                         @if ($meta->uploads->where('name', 'letterofintro')->isNotEmpty())
                                             <p class="file-list">You uploaded a Letter of Introduction Copy on  
                                                 {{ 
-                                                    $meta->uploads->where('name', 'letterofintro')->first()->created_at != null ?
-                                                    $meta->uploads->where('name', 'letterofintro')->first()->created_at->toFormattedDateString() 
+                                                    $meta->uploads->where('name', 'letterofintro')->first() != null ?
+                                                    $meta->uploads->where('name', 'letterofintro')->first()->created_at->toFormattedDateString() : ''
                                                 }}
                                             </p>
                                         @endif
