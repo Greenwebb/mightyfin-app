@@ -20,11 +20,13 @@
                         <input type="hidden" name="borrower_id" value="{{ auth()->user()->id }}">
                         <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
                         <!-- Personal Info -->
-                        <div class="step col-xxl-12" id="step1"  data-aos="fade-left"
+                        <div class="step col-xxl-12" id="step1"  
+                            {{-- data-aos="fade-left"
                             data-aos-anchor="#example-anchor"
                             data-aos-startEvent="DOMContentLoaded"
                             data-aos-offset="500"
-                            data-aos-duration="500">
+                            data-aos-duration="500" --}}
+                            >
 
                             <div style="width: 90%" class="d-flex justify-content-between mb-2">
                                 <h5>Profile Details</h5>
@@ -82,7 +84,7 @@
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="employeeNo">EMPLOYEE NO</label>
-                                    <input value="{{ auth()->user()->employeeNo }}" type="text" class="form-control" id="employeeNo" placeholder="Employee No." name="employeeNo">
+                                    <input value="{{ auth()->user()->employeeNo }}" type="text" class="form-control" id="employeeNo" placeholder="Employee No." name="employeeNo" maxlength="8">
                                     <small id="employeeNoError" class="text-danger"></small>
                                 </div>
                             </div>
@@ -647,11 +649,8 @@
     </div>
 </div>
 
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+{{-- <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script> --}}
 <script>
-    // if (window.innerWidth > 768) {
-    //     AOS.init();
-    // }
     let currentStep = 1;
     showStep(1);
 
@@ -663,20 +662,20 @@
       currentStep.style.display = 'block';
 
       // Attach AOS attributes to the current step element
-      currentStep.setAttribute('data-aos', 'fade-left');
-      currentStep.setAttribute('data-aos-anchor', '#example-anchor');
-      currentStep.setAttribute('data-aos-offset', '500');
-      currentStep.setAttribute('data-aos-duration', '500');
-      currentStep.setAttribute('data-aos-once', 'false');
-      currentStep.setAttribute('data-aos-mirror', 'true');
+    //   currentStep.setAttribute('data-aos', 'fade-left');
+    //   currentStep.setAttribute('data-aos-anchor', '#example-anchor');
+    //   currentStep.setAttribute('data-aos-offset', '500');
+    //   currentStep.setAttribute('data-aos-duration', '500');
+    //   currentStep.setAttribute('data-aos-once', 'false');
+    //   currentStep.setAttribute('data-aos-mirror', 'true');
       
-      // Initialize AOS for the current step
-      AOS.init({
-          duration: 1000, // You can set a default duration for AOS
-      });
+    //   // Initialize AOS for the current step
+    //   AOS.init({
+    //       duration: 1000, // You can set a default duration for AOS
+    //   });
 
-      // Refresh AOS to apply the changes
-      AOS.refresh();
+    //   // Refresh AOS to apply the changes
+    //   AOS.refresh();
     }
 
     function nextStep(step) {
@@ -775,6 +774,9 @@
       // In this example, we'll check if the input is not empty
       if (!employeeNo.value) {
           employeeNoError.textContent = 'Employee Number is required';
+      }
+      if (employeeNo.value.length !== 8) {
+        employeeNoError.textContent = 'Employee Number must be 8 characters long';
       }
       if (!jobTitleInput.value) {
           jobTitleError.textContent = 'Job Title is required';
@@ -1150,42 +1152,40 @@
 
     // JavaScript to handle file selection and removal
     fileInput.addEventListener('change', function () {
-    const files = this.files; 
-    // Initialize an array to store uploaded file names
+        const files = this.files; 
+        // Initialize an array to store uploaded file names
+        if (files.length > 0) {
+            // Add the uploaded files to the uploadedFiles array
+            Array.from(files).forEach(file => {
+                uploadedFiles.push(file);
 
-  if (files.length > 0) {
+                const listItem = document.createElement('li');
+                listItem.className = 'file-item grid pb-1';
+                listItem.innerHTML = `
+                    <span class="grid-file-item">${file.name}</span>
+                    <button class="grid-file-item-btn" type="button" class="remove-button" data-name="${file.name}">x</button>
+                `;
+                fileList.appendChild(listItem);
+            });
+        }
+    });
 
-      // Add the uploaded files to the uploadedFiles array
-      Array.from(files).forEach(file => {
-          uploadedFiles.push(file);
-
-          const listItem = document.createElement('li');
-          listItem.className = 'file-item grid pb-1';
-          listItem.innerHTML = `
-              <span class="grid-file-item">${file.name}</span>
-              <button class="grid-file-item-btn" type="button" class="remove-button" data-name="${file.name}">x</button>
-          `;
-          fileList.appendChild(listItem);
-      });
-  }
-  });
-  fileList.addEventListener('click', function (e) {
-
-  // console.log(e.target.classList.value);
-  if (e.target.classList.value == 'grid-file-item-btn') {
-      const fileName = e.target.getAttribute('data-name');
-      const fileItem = e.target.parentElement;
-      fileItem.remove();
-      // Remove the file name from the uploadedFiles array
-      const fileIndex = uploadedFiles.indexOf(fileName);
-      if (fileIndex !== -1) {
-          uploadedFiles.splice(fileIndex, 1);
-      }
-      // Update the hidden input with the updated uploaded files
-      myUploadedFilesInput.value = JSON.stringify(uploadedFiles);
-      // You can perform additional actions here (e.g., remove the file from the server).
-  }
-  });
+    fileList.addEventListener('click', function (e) {
+        // console.log(e.target.classList.value);
+        if (e.target.classList.value == 'grid-file-item-btn') {
+            const fileName = e.target.getAttribute('data-name');
+            const fileItem = e.target.parentElement;
+            fileItem.remove();
+            // Remove the file name from the uploadedFiles array
+            const fileIndex = uploadedFiles.indexOf(fileName);
+            if (fileIndex !== -1) {
+                uploadedFiles.splice(fileIndex, 1);
+            }
+            // Update the hidden input with the updated uploaded files
+            myUploadedFilesInput.value = JSON.stringify(uploadedFiles);
+            // You can perform additional actions here (e.g., remove the file from the server).
+        }
+    });
 
 
   //Tpin File Upload
