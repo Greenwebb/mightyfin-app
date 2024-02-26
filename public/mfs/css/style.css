@@ -1421,7 +1421,7 @@ progress {
         padding: 4px;
         margin: 0px;
     }
-    
+
     .col-md-12 {
         -webkit-box-flex: 0;
         -ms-flex: 0 0 auto;
@@ -15573,7 +15573,7 @@ strong {
 
 .profile_log .dropdown-menu .dropdown-item {
     padding: 10px 20px;
-    border-top: 1px solid #792db8;
+    border-top: 0px solid #792db8;
     font-weight: 400;
     display: -webkit-box;
     display: -ms-flexbox;
