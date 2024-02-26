@@ -3,11 +3,7 @@
         {{ session('success') }}
     </div>
 @endif
-@if(session('error'))
-    <div class="alert alert-success">
-        {{ session('success') }}
-    </div>
-@endif
+
 <div class="row">
 <div class="col-xxl-6 col-xl-6 col-lg-6">
     <div class="card welcome-profile">
@@ -81,23 +77,20 @@
         <h4 class="card-title">Create a Ticket</h4>
     </div>
     <div class="card-body">
-        <form action="{{ route('tickets.store') }}" class="app-link">
+        <form method="POST" action="{{ route('tickets.store') }}" class="app-link">
             @csrf
-            <h5></h5>
             <p>
                 Hi {{ auth()->user()->fname.' '.auth()->user()->lname }}, How may we assit you today, please sumbit your complaint or issue here, by creating a ticket 
                 and we will email you {{ auth()->user()->email }} once the issue has been resolved
             </p>
-            
             <div class="col-xxl-12 col-xl-12 col-lg-12">
                 <label class="form-label">What issues are you facing?</label>
                 <textarea
-                type="text"
-                class="form-control"
-                name="message"
+                    type="text"
+                    class="form-control"
+                    name="message"
                 ></textarea>
             </div>
-            
             <div class="mt-3"></div>
             <button type="submit" href="#" class="btn btn-primary">
                 Submit

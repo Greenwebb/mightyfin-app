@@ -130,7 +130,7 @@
                     {{  $data['message']  }}. 
                 </p>
                 <p style="text-align: center; font-size:12px">
-                    {{  $data['message2']  }}. 
+                    <b>{{  $data['message2']  }}</b>. 
                 </p>
                 <div style="width: 100%; text-align: center; display: flex; align-items: center; justify-content: center;">
                     <a style="margin-left:15%; color: #fff; padding-left:6%; padding:5%;font-size:18px" target="_blank" href="https://mightyfinance.co.zm/dashboard" class="-btn -bg -txt">

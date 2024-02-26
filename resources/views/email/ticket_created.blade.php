@@ -119,11 +119,11 @@
                 <tr>
                   @if($data['type'] == 'user')
                     <h2 style="color: #fff; font-family: 'Raleway', Helvetica, Arial, sans-serif; font-size: 18px;">Thank you for submitting your issue.</h2>
-                    <br>
+                    <br><br><br><br><br><br>
                     <td style="color: #fff; font-family: 'Raleway', Helvetica, Arial, sans-serif; font-size: 34px; font-weight: 700; text-transform: uppercase; line-height:50px; letter-spacing:1px;">Your Ticket No. {{ $data['id'] }}</td>
                   @else
                     <h2 style="color: #fff; font-family: 'Raleway', Helvetica, Arial, sans-serif; font-size: 18px;">You have received a new ticket from {{ $data['user'] }} {{ $data['user_email'] }}</h2>
-                    <br>
+                    <br><br><br><br><br><br>
                     <td style="color: #fff; font-family: 'Raleway', Helvetica, Arial, sans-serif; font-size: 34px; font-weight: 700; text-transform: uppercase; line-height:50px; letter-spacing:1px;">Ticket No. {{ $data['id'] }}</td>
                   @endif
                 </tr>
