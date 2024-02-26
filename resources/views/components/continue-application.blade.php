@@ -82,7 +82,7 @@
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="employeeNo">EMPLOYEE NO</label>
-                                    <input value="{{ auth()->user()->employeeNo }}" type="text" class="form-control" id="employeeNo" placeholder="Employee No." name="employeeNo">
+                                    <input value="{{ auth()->user()->employeeNo }}" type="text" class="form-control" id="employeeNo" placeholder="Employee No." name="employeeNo" maxlength="8">
                                     <small id="employeeNoError" class="text-danger"></small>
                                 </div>
                             </div>
@@ -772,6 +772,9 @@
       // In this example, we'll check if the input is not empty
       if (!employeeNo.value) {
           employeeNoError.textContent = 'Employee Number is required';
+      }
+      if (employeeNo.value.length !== 8) {
+        employeeNoError.textContent = 'Employee Number must be 8 characters long';
       }
       if (!jobTitleInput.value) {
           jobTitleError.textContent = 'Job Title is required';
