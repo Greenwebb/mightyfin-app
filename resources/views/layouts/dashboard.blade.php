@@ -28,7 +28,7 @@
     <link rel="stylesheet" href="https://unpkg.com/intro.js/introjs.css">
     <!-- Include your modal library (e.g., Bootstrap) -->
     <!-- Add your modal CSS and JS here -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    {{-- <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"> --}}
     <link href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css" rel="stylesheet">
     @livewireStyles
     <style>
@@ -260,7 +260,7 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> --}}
 
     <script>
-        AOS.init();
+        // AOS.init();
         let status = '{{ $status }}';
         let router = '{{ $route }}';
         let kyc = '{{ $kyc }}';

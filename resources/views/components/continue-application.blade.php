@@ -647,11 +647,8 @@
     </div>
 </div>
 
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+{{-- <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script> --}}
 <script>
-    // if (window.innerWidth > 768) {
-    //     AOS.init();
-    // }
     let currentStep = 1;
     showStep(1);
 
