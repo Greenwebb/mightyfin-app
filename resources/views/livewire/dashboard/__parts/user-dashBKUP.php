@@ -186,7 +186,7 @@
                         </div>
                         <div class="col-xl-4 col-4 items-center justify-content-center">
                             <a href="{{ route('profile.show') }}">
-                                <div style="background-color: #ffd900" class="widget-stat card rounded">
+                                <div style="background-color: #ffc00e" class="widget-stat card rounded">
                                     <div class="text-center items-center justify-center justify-content-center card-body p-4">
                                         <span class="">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" fill="currentColor" class="bi bi-person-lock" viewBox="0 0 16 16">
@@ -256,7 +256,7 @@
                                             <span class="fs-12">K2000</span>
                                         </div>
                                     </div>
-                                </div> 
+                                </div>
                             </div>
                             <div class="card-footer border-0 pt-0">
                                 <div class="row align-items-center">
@@ -336,7 +336,7 @@
                                     <ul class="nav nav-tabs" role="tablist">
                                         <li class="nav-item">
                                             <a class="nav-link active" data-toggle="tab" href="#monthly" role="tab" aria-selected="true">
-                                                Completed	
+                                                Completed
                                             </a>
                                         </li>
                                         <li class="nav-item">

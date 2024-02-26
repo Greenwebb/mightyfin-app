@@ -1,5 +1,5 @@
 <style>
-    
+
     .main-content .wizard-form .progressbar-list::before{
     content: " ";
     background-color: rgb(155, 155, 155);
@@ -82,57 +82,57 @@
     .bg-success-color:focus{
         box-shadow: 0 0 0 0.25rem rgb(55 197 20 / 25%);
     }
-    
+
     .selected-card {
         background-color: #ffd500; /* Light red background color */
-        border: 1px solid #ffd900; /* Red border color */
+        border: 1px solid #ffc00e; /* Red border color */
     }
-    
+
     /* Input Field Style */
     /* General styling for all inputs */
     input {
-        
+
         padding: 10px;
         border: 2px solid #792db8; /* Border color */
         border-radius: 5px; /* Rounded corners */
         font-size: 24px; /* Increased font size */
         font-family: 'Arial', sans-serif;
     }
-    
+
     /* Styling for text-type inputs */
     input[name='amount'] {
         text-align: right;
     }
-    
+
     /* Hover effect */
     input:hover {
         border-color: #792db8; /* Border color on hover */
     }
-    
+
     /* Focus effect */
     input:focus {
         outline: none;
         border-color: #792db8; /* Border color when focused */
         box-shadow: 0 0 10px rgba(185, 60, 231, 0.8); /* Box shadow when focused */
     }
-    
-    
+
+
     /* ranger */
     @import url("https://fonts.googleapis.com/css2?family=Creepster&family=montserrat:wght@700&display=swap");
-    
+
     /* .container {
         height: 100vh;
         display: flex;
         align-items: center;
         justify-content: center;
     } */
-    
+
     .range-slider {
         position: relative;
         width: 80vmin;
         height: 20vmin;
     }
-    
+
     .range-slider_input {
         width: 100%;
         position: absolute;
@@ -146,7 +146,7 @@
       opacity: 0;
         margin: 0;
     }
-    
+
     .range-slider_input::-webkit-slider-thumb {
       -webkit-appearance: none;
       appearance: none;
@@ -156,7 +156,7 @@
         border-radius: 50%;
         opacity: 0;
     }
-    
+
     .range-slider_input::-moz-range-thumb {
       width: 14vmin;
       height: 14vmin;
@@ -164,7 +164,7 @@
         border-radius: 50%;
         opacity: 0;
     }
-    
+
     .range-slider_thumb {
         width: 14vmin;
         height: 14vmin;
@@ -183,7 +183,7 @@
         color: #792db8;
         z-index: 2;
     }
-    
+
     .range-slider_line {
         height: 0.5vmin;
         width: 100%;
@@ -194,21 +194,21 @@
         position: absolute;
         z-index: 1;
     }
-    
+
     .range-slider_line-fill {
         position: absolute;
         height: 0.5vmin;
         width: 0;
         background-color: #792db8;
     }
-    
+
     .disabled-card {
         opacity: 0.5; /* Adjust the opacity as needed */
         pointer-events: none; /* Disable pointer events */
         cursor: not-allowed; /* Set the cursor to "not-allowed" */
     }
 
-    
+
 #preloader2 {
   position: fixed;
   width: 100%;
@@ -307,7 +307,7 @@
                     <!-- main content -->
                     <form  action="{{ route("apply-loan") }}" method="POST" enctype="multipart/form-data" class="main-content">
                         @csrf
-                        
+
                         <!-- alert box -->
                         <div class="row justify-content-center">
                         <div class="col-lg-7 col-md-8">
@@ -411,9 +411,9 @@
                                             </div>
                                         </label>
                                     </div>
-                                
+
                                     {{-- Make this col disabled --}}
-    
+
                                     {{-- <div class="col">
                                         onclick="selectCard(this)"
                                         <label class="card text-center h-70 py-2 disabled-card">
@@ -425,7 +425,7 @@
                                             </div>
                                         </label>
                                     </div> --}}
-                                
+
                                     {{-- Make this col disabled --}}
                                    {{-- <div class="col">
                                         onclick="selectCard(this)"
@@ -439,7 +439,7 @@
                                         </label>
                                     </div>  --}}
                                 </div>
-                                
+
                                 <!-- /cards -->
                                 <!-- NEXT BUTTON-->
                                 <button type="button" class="btn btn-dark text-white float-start back mt-0 rounded-3">Go Back</button>
@@ -461,17 +461,17 @@
                                     <div class="range-slider_line">
                                     <div id="slider_line" class="range-slider_line-fill"></div>
                                     </div>
-                                    
+
                                     <input id="slider_input" name="duration" class="range-slider_input" type="range" value="2" min="1" max="12">
                                 </div>
-                            </div>  
+                            </div>
                             <div class="row">
                                 <div class="col-12">
                                     <div class="row">
                                         <div class="col-lg-6">
                                             <p id="interest_value">Interest Rate: 21%</p>
                                             <p id="principal_value"></p>
-                                        </div> 
+                                        </div>
                                         <div class="col-lg-6">
                                             <p id="slider_value">2 Months</p>
                                             <p id="interest_value">Interest Rate: 21%</p>
@@ -499,7 +499,7 @@
                             <div class="position-relative success-content">
                                 <span class="w-100" id="successImage" alt="success-message">
 
-                                    
+
                                     <div id="preloader2"><i>.</i><i>.</i><i>.</i></div>
                                     <svg style="font-siz:14px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><circle fill="#BB14FF" stroke="#BB14FF" stroke-width="2" r="15" cx="40" cy="100"><animate attributeName="opacity" calcMode="spline" dur="2" values="1;0;1;" keySplines=".5 0 .5 1;.5 0 .5 1" repeatCount="indefinite" begin="-.4"></animate></circle><circle fill="#BB14FF" stroke="#BB14FF" stroke-width="2" r="15" cx="100" cy="100"><animate attributeName="opacity" calcMode="spline" dur="2" values="1;0;1;" keySplines=".5 0 .5 1;.5 0 .5 1" repeatCount="indefinite" begin="-.2"></animate></circle><circle fill="#BB14FF" stroke="#BB14FF" stroke-width="2" r="15" cx="160" cy="100"><animate attributeName="opacity" calcMode="spline" dur="2" values="1;0;1;" keySplines=".5 0 .5 1;.5 0 .5 1" repeatCount="indefinite" begin="0"></animate></circle></svg>
                                 </span>
@@ -520,7 +520,7 @@
                                             <li>2. Upload Loan Documents (<b>Preapproval Form</b> & <b>Letter of Introduction</b> ).</li>
                                             <li>3. Complete KYC (Upload Copy of <b>National ID</b> & <b>TPIN</b> ).</li>
                                         </ol>
-    
+
                                     </div>
                                     {{-- <div class="form-check mt-3">
                                         <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
@@ -543,7 +543,7 @@
                     <!-- /container -->
                 </section>
                 <!-- /section -->
-    
+
             </div>
         </div>
         <!-- pickdate -->
@@ -553,7 +553,7 @@
             $(document).ready(function () {
                 var principal = 0;
                 var rate = 21;
-                
+
                 // hidden things
                 $(".form-business").hide();
                 $("#successMessage").hide();
@@ -569,7 +569,7 @@
                             $(this).parents(".row").fadeOut("slow", function () {
                                 $(this).next(".row").fadeIn("slow");
                             });
-                            
+
                         } else {
                             $("#progressBar").find(".active").next().addClass("active");
                             $("#alertBox").addClass("d-none");
@@ -610,21 +610,21 @@
                         location.reload(true);
                     }
                 });
-    
+
                 // Get the input element by its ID
                 const amountInput = document.getElementById('amountInput');
-    
+
                 // Add an input event listener to the input element
                 amountInput.addEventListener('input', function() {
                     // Get the current value of the input
                     var inputValue = amountInput.value;
-    
+
                     // Remove non-numeric characters (letters, symbols, commas)
                     var numericValue = inputValue.replace(/[^0-9.]/g, '');
-    
+
                     // Convert the numeric value to a float
                     principal = parseInt(numericValue);
-    
+
                     var my_returns = (parseInt(principal) * 0.21) * parseInt(2) + parseInt(principal);
                     // Log the cleaned and converted value to the console
                     console.log('Borrowing: ', principal);
@@ -633,53 +633,52 @@
                     // Update a display element with the current value
                     $('#slider_value').text( 'Payback in 2 Months');
                 });
-    
-    
+
+
                 // Use input event to track changes in the range input value
                 $('#slider_input').on('input', function () {
-    
+
                     // Get the current value of the range input
                     var sliderValue = $(this).val();
-    
+
                     var my_returns = (parseInt(principal) * 0.21) * parseInt(sliderValue) + parseInt(principal);
-    
+
                     $('#payback_value').text( 'Payback amount of: K'+my_returns.toFixed(2));
                     $('#principal_value').text( 'Borrowing: K'+principal);
                     // Update a display element with the current value
                     $('#slider_value').text( 'Payback in '+sliderValue + ' Months');
                 });
-            }); 
-    
-    
-    
+            });
+
+
+
             const slider_input = document.getElementById('slider_input'),
             slider_thumb = document.getElementById('slider_thumb'),
             slider_line = document.getElementById('slider_line');
-    
+
             function showSliderValue() {
                 slider_thumb.innerHTML = slider_input.value;
                 const bulletPosition = (slider_input.value /slider_input.max),
                         space = slider_input.offsetWidth - slider_thumb.offsetWidth;
-    
+
                 slider_thumb.style.left = (bulletPosition * space) + 'px';
                 slider_line.style.width = slider_input.value + '%';
             }
-    
+
             showSliderValue();
             window.addEventListener("resize",showSliderValue);
             slider_input.addEventListener('input', showSliderValue, false);
-    
+
             function selectCard(selectedLabel) {
                 // Remove the 'selected-card' class from all labels
                 var labels = document.querySelectorAll('.card');
                 labels.forEach(function (label) {
                     label.classList.remove('selected-card');
                 });
-    
+
                 // Add the 'selected-card' class to the clicked label
                 selectedLabel.classList.add('selected-card');
             }
         </script>
-        
+
     </div>
-    

@@ -53,13 +53,13 @@
 
 .selected-card {
     background-color: #ffd500; /* Light red background color */
-    border: 1px solid #ffd900; /* Red border color */
+    border: 1px solid #ffc00e; /* Red border color */
 }
 
 /* Input Field Style */
 /* General styling for all inputs */
 input {
-    
+
     padding: 10px;
     border: 2px solid #792db8; /* Border color */
     border-radius: 5px; /* Rounded corners */
@@ -86,7 +86,7 @@ input:focus {
 
 </style>
 <div class="col-xxl-12 col-xl-12 col-lg-12">
-    <div id="fileUploadSection" class="profile-card card-bx m-b30 p-4">    
+    <div id="fileUploadSection" class="profile-card card-bx m-b30 p-4">
         <div class="wizard-container">
             <form action="{{ route("update-kyc-uploads") }}" method="POST" enctype="multipart/form-data"  id="wizardForm">
                 @csrf
@@ -130,14 +130,14 @@ input:focus {
                             <select
                                 name="id_type"
                                 class="form-control"
-                                >  
+                                >
                                 <option {{ auth()->user()->id_type == null ? 'selected' : ''}} value="">-- Choose --</option>
                                 <option {{ auth()->user()->id_type == 'NRC' ? 'selected' : ''}} value="NRC">NRC</option>
                                 <option {{ auth()->user()->id_type == 'Passport' ? 'selected' : ''}} value="Passport">Passport</option>
                                 <option {{ auth()->user()->id_type == 'Driver Liecense' ? 'selected' : ''}} value="Driver Liecense">Driver Liecense</option>
                             </select>
                         </div>
-                        
+
                         <div class="col-xxl-4 col-xl-4 col-lg-4">
                             <label class="form-label">National ID Number</label>
                             <input
@@ -156,7 +156,7 @@ input:focus {
                                 class="form-control"
                                 name="gender"
                                 {{-- wire:model.defer="state.gender" --}}
-                                >  
+                                >
                                 <option value="{{ auth()->user()->gender}}">{{ auth()->user()->gender}}</option>
                                 <option value="Male">Male</option>
                                 <option value="Female">Female</option>
@@ -200,7 +200,7 @@ input:focus {
                     </div>
                     <button type="button" class="btn text-white float-end next mt-4 rounded-3 bg-color-info" onclick="navigateStep('next')">Next</button>
                 </div>
-            
+
                 <div class="step justify-content-center" id="step2">
                     <div class="col-xl-6">
                         <div class="form-group">
@@ -208,12 +208,12 @@ input:focus {
                                 <div class="mb-3">
                                     <label for="formFile" class="form-label">Copy of NRC</label>
                                     <input required class="form-control" name="nrc_file" type="file" id="formFile">
-                                
+
                                     @if ($meta->uploads->where('name', 'nrc_file')->isNotEmpty())
                                         <p class="text-success file-list">You uploaded a National ID Copy on {{ $meta->uploads->where('name', 'nrc_file')->first()->created_at->toFormattedDateString() }}</p>
                                     @endif
                                 </div>
-    
+
                             </div>
                         </div>
                     </div>
@@ -223,7 +223,7 @@ input:focus {
                                 <div class="mb-3">
                                     <label for="tpin_file" class="form-label">Tpin</label>
                                     <input required class="form-control" name="tpin_file" type="file" id="tpin_file">
-                                    
+
                                     @if ($meta->uploads->where('name', 'tpin_file')->isNotEmpty())
                                         <p class="text-success file-list">You uploaded a Tpin Copy on  {{ $meta->uploads->where('name', 'tpin_file')->first()->created_at->toFormattedDateString() }}</p>
                                     @endif
@@ -244,16 +244,16 @@ input:focus {
 {{-- <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> --}}
 <script>
     let wcurrentStep = 1;
-  
+
     // Show initial step
     showStep(wcurrentStep);
-  
+
     function showStep(step) {
       const steps = document.querySelectorAll('.step');
       steps.forEach(s => s.style.display = 'none');
       document.getElementById(`step${step}`).style.display = 'block';
     }
-  
+
     function navigateStep(direction) {
       if (direction === 'next' && wcurrentStep < 2) {
         wcurrentStep++;
@@ -263,4 +263,3 @@ input:focus {
       showStep(wcurrentStep);
     }
   </script>
-  

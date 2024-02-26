@@ -117,6 +117,7 @@
         align-items: center;
         padding: 10px;
         text-align: center;
+        border-radius: 0.7rem 
     }
 
     .btn-default:hover {
@@ -137,6 +138,9 @@
         .button-container {
             padding-right: 4%;
         }
+    }
+    .card .card-body{
+        padding: 2rem
     }
 </style>
 <div class="col-12" style="background-image: linear-gradient(to right, #792db8, #912d73);color:#fff;border-bottom-left-radius: 2rem; border-bottom-right-radius: 2rem; color:#fff">
@@ -248,11 +252,11 @@
                     {{-- Yellow Background --}}
                     @include('livewire.dashboard.__parts.current-balance')
                     {{-- Qiuck Actions --}}
-                    <p>
+                    <h4>
                         <strong class="text-primary">Quick Actions</strong>
-                    </p>
+                    </h4>
                     <div class="button-container mb-4">
-                        <a class="text-center" href="{{ route('payment.gate', ['view' => 'bills']) }}">
+                        {{--<a class="text-center" href="{{ route('payment.gate', ['view' => 'bills']) }}">
                             <span class="btn btn-default">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35"
                                     fill="currentColor" class="bi bi-receipt" viewBox="0 0 16 16">
@@ -283,7 +287,7 @@
                                 </svg>
                             </span>
                             <small>Deposit</small>
-                        </a>
+                        </a>--}}
                         <a class="text-center" href="{{ route('profile.show', ['view' => 'kyc']) }}">
                             <span class="btn btn-default">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35"
@@ -294,7 +298,7 @@
                             </span>
                             <small>KYC</small>
                         </a>
-                        <a class="text-center" href="{{ route('payment.gate', ['view' => 'withdraw']) }}">
+                        {{-- /*<a class="text-center" href="{{ route('payment.gate', ['view' => 'withdraw']) }}">
                             <span class="btn btn-default">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35"
                                     fill="currentColor" class="bi bi-cash" viewBox="0 0 16 16">
@@ -304,13 +308,13 @@
                                 </svg>
                             </span>
                             <small>Widthdraw</small>
-                        </a>
+                        </a> */ --}}
                     </div>
-                    <p>
+                    <h4>
 
                       <strong class="text-primary">
                         Wallet Information</strong>
-                  </p>
+                  </h4>
 
                     <div class="col-xxl-4 col-xl-12">
                         <div class="row">
@@ -424,11 +428,11 @@
                                     </div>
                                 </div> -->
                         </div>
-                    </div><p>
+                    </div><h4>
 
                       <strong class="text-primary">
                         Loan History</strong>
-                  </p>
+                  </h4>
 
                     <div class="col-xxl-12 col-xl-12">
                         <div class="card">

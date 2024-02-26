@@ -149,7 +149,7 @@
                             <img width="300" src="{{ asset('public/mfs/admin/assets/media/illustrations/sigma-1/loan.png')}}" alt="">
                             @role('user')
                             <div class="my-4">
-                                <a href="{{ route('new-loan') }}" style="background-color:#571d58;" class="btn btn-primary">
+                                <a href="{{ route('new-loan') }}" class="btn btn-primary">
                                     <strong>Get a Loan</strong>
                                 </a>
                             </div>

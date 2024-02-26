@@ -155,7 +155,7 @@
                     <div class="authincation-content">
                         <div class="row no-gutters">
                             <div id="form-card">
-                                <div class="auth-form">
+                                <div class="auth-form" style="border-radius:1.3rem">
                                     <div class="w-full">
                                         <h2 id="create-text" style="color: #792db8" class="text-center mb-2"> <b>Create an Account</b> </h2>
                                         <p style="color: #792db8" class="text-center">Already have an account? <a class="text-warning" href="{{ route('login') }}">Sign in</a></p>

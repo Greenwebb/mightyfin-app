@@ -163,10 +163,10 @@
         <div class="row">
             <div class="col-xxl-6 col-xl-6 col-lg-6">
                 <div class="card"
-                    style="border-radius:2.5rem; height:25vh; background-image:  linear-gradient(to right, #653092, #9E59F1); color:#fff">
+                    style="border-radius:3rem; height:25vh; background-image:  linear-gradient(to right, #653092, #9E59F1); color:#fff">
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-xxl-8 col-xl-8 col-lg-8 col-md-6 col-sm-6" style="padding-top:8%">
+                            <div class="col-xxl-8 col-xl-8 col-lg-8 col-md-6 col-sm-6" style="padding-top: 4%;">
                                 <span class="pb-2"><strong style=" color: #ffc800">Apply for a Loan</strong></span>
 
                                 <div class="mt-2">
@@ -191,9 +191,9 @@
                                 @media (max-width: 577px) {
                                     .balance {
                                         width: 120px;
-                                        position: absolute;
-                                        top: 25px;
-                                        left: 230px;
+    position: absolute;
+    top: 13%;
+    left: 50%;
                                     }
                                 }
                             </style>
@@ -208,9 +208,9 @@
                 background-size: cover;
                 height:25vh;
                 position: relative;
-                border-radius:4%;">
+                border-radius: 3rem;">
                     <div
-                        style="border-radius:2%;position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(102, 45, 145, 0.772);">
+                        style="border-radius: 3rem; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(102, 45, 145, 0.772);">
                     </div>
                     <div class="card-body">
                         <div class="row" style="padding-top: 7%">

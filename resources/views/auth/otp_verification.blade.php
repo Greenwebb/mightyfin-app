@@ -23,6 +23,13 @@
             color: rgb(255, 187, 0);
         }
 
+        .auth-form .btn {
+            height: 50px;
+            font-weight: 700;
+            border-radius: 2.5rem;
+            box-shadow: none !important;
+        }
+
         #background-container {
             position: fixed;
             top: 0;
@@ -146,7 +153,7 @@
             #id-text {
                 font-size: 10px;
             }
-                    
+
             .disabled {
                 opacity: 0.5;
                 pointer-events: none;
@@ -187,25 +194,30 @@
                                         src="{{ asset('/public/web/images/otp-icon.png') }}" alt="verification"></p>
                                 <p style="color:#792db8" class="text-muted text-center mb-4">Please enter the OTP (one
                                     time password) to verify your account. A code has been sent to <span
-                                        class="text-dark text-4">{{ '+26 '.auth()->user()->phone }}</span></p>
+                                        class="text-dark text-4">{{ '+26 ' . auth()->user()->phone }}</span></p>
                                 <p class="text-dark text-center fw-600 mb-3">Enter 5 digit code</p>
                                 <form id="otp-screen" method="POST" class="text-white" action="{{ route('otp') }}">
                                     @csrf
                                     <div class="row g-3">
                                         <div class="col">
-                                            <input type="text" class="form-control rounded-0 text-center text-6 py-2" maxlength="1" required="" autocomplete="off">
+                                            <input type="text" class="form-control rounded-0 text-center text-6 py-2"
+                                                maxlength="1" required="" autocomplete="off">
                                         </div>
                                         <div class="col">
-                                            <input type="text" class="form-control rounded-0 text-center text-6 py-2" maxlength="1" required="" autocomplete="off">
+                                            <input type="text" class="form-control rounded-0 text-center text-6 py-2"
+                                                maxlength="1" required="" autocomplete="off">
                                         </div>
                                         <div class="col">
-                                            <input type="text" class="form-control rounded-0 text-center text-6 py-2" maxlength="1" required="" autocomplete="off">
+                                            <input type="text" class="form-control rounded-0 text-center text-6 py-2"
+                                                maxlength="1" required="" autocomplete="off">
                                         </div>
                                         <div class="col">
-                                            <input type="text" class="form-control rounded-0 text-center text-6 py-2" maxlength="1" required="" autocomplete="off">
+                                            <input type="text" class="form-control rounded-0 text-center text-6 py-2"
+                                                maxlength="1" required="" autocomplete="off">
                                         </div>
                                         <div class="col">
-                                            <input type="text" class="form-control rounded-0 text-center text-6 py-2" maxlength="1" required="" autocomplete="off">
+                                            <input type="text" class="form-control rounded-0 text-center text-6 py-2"
+                                                maxlength="1" required="" autocomplete="off">
                                         </div>
                                     </div>
                                     <div class="d-grid my-4">
@@ -233,7 +245,8 @@
                                     </div>
 
                                 </form>
-                                <p class="text-center">Not received your code? <a href="{{ route('dashboard') }}"><u>Resend code</u></a>
+                                <p class="text-center">Not received your code? <a
+                                        href="{{ route('dashboard') }}"><u>Resend code</u></a>
                                 </p>
                             </div>
                         </div>
@@ -255,59 +268,62 @@
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
             const inputs = $('input[type="text"]');
             const user_id = {!! json_encode(auth()->user()->id) !!};
-            
-            inputs.on('input', function () {
+
+            inputs.on('input', function() {
                 const index = inputs.index(this);
                 if (index < inputs.length - 1 && $(this).val().trim() !== '') {
-                inputs.eq(index + 1).focus();
+                    inputs.eq(index + 1).focus();
                 }
-            
-                if (inputs.filter((_, el) => $(el).val().trim() !== '').length === inputs.length) {
-                const otp = inputs.map((_, el) => $(el).val()).get().join('');
-            
-                // Disable input fields during the verification process
-                inputs.addClass('disabled');
-            
-                $.post('api/verify-otp', { otp: otp, user_id: user_id }, function (response) {
-                    // console.log(response === 'true');
-                    if (response === 'true') {
-                        // Display success swal alert
-                        Swal.fire({
-                            icon: 'success',
-                            title: 'Verification Successful!',
-                            text: 'Your OTP has been verified.',
-                        });
-                        // Use the route function to generate the URL based on the route name
-                        const homeRoute = "{{ route('dashboard') }}";
 
-                        // Redirect to the "home" route
-                        window.location.href = homeRoute;
-                    } else {
-                        // Display error swal alert
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Verification Failed!',
-                            text: 'Please check your OTP and try again.',
-                        });
-                    }
-            
-                    // Remove disable effect after verification
-                    inputs.removeClass('disabled');
-                });
+                if (inputs.filter((_, el) => $(el).val().trim() !== '').length === inputs.length) {
+                    const otp = inputs.map((_, el) => $(el).val()).get().join('');
+
+                    // Disable input fields during the verification process
+                    inputs.addClass('disabled');
+
+                    $.post('api/verify-otp', {
+                        otp: otp,
+                        user_id: user_id
+                    }, function(response) {
+                        // console.log(response === 'true');
+                        if (response === 'true') {
+                            // Display success swal alert
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Verification Successful!',
+                                text: 'Your OTP has been verified.',
+                            });
+                            // Use the route function to generate the URL based on the route name
+                            const homeRoute = "{{ route('dashboard') }}";
+
+                            // Redirect to the "home" route
+                            window.location.href = homeRoute;
+                        } else {
+                            // Display error swal alert
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Verification Failed!',
+                                text: 'Please check your OTP and try again.',
+                            });
+                        }
+
+                        // Remove disable effect after verification
+                        inputs.removeClass('disabled');
+                    });
                 }
             });
-            
-            inputs.on('keypress', function (e) {
+
+            inputs.on('keypress', function(e) {
                 const key = e.which;
                 if (key < 48 || key > 57) {
-                e.preventDefault();
+                    e.preventDefault();
                 }
             });
         });
-        </script>
+    </script>
 
 </body>
 

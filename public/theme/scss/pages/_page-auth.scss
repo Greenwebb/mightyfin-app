@@ -73,10 +73,11 @@
     padding: 50px 50px;
 	@include respond('phone') {
 		padding: 30px;
-	}	
+	}
     .btn{
         height: 50px;
         font-weight: 700;
+        border-radius: 2.5rem
     }
     .page-back{
         display: inline-block;

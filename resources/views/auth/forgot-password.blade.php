@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -16,6 +16,13 @@
             overflow: hidden;
         }
 
+        .auth-form .btn {
+            height: 50px;
+            font-weight: 700;
+            border-radius: 2.5rem;
+            box-shadow: none !important;
+        }
+
         #background-container {
             position: fixed;
             top: 0;
@@ -23,7 +30,7 @@
             width: 100%;
             height: 100%;
             background: linear-gradient(to right, rgba(102, 45, 145, 0.8), rgba(145, 45, 115, 0.8)),
-                        url('https://cdn03.allafrica.com/download/pic/main/main/csiid/00611742:63e77387f56223a1509fb944791b01eb:arc614x376:w735:us1.jpg');
+                url('https://cdn03.allafrica.com/download/pic/main/main/csiid/00611742:63e77387f56223a1509fb944791b01eb:arc614x376:w735:us1.jpg');
             background-size: cover;
             background-position: center;
         }
@@ -33,7 +40,8 @@
         }
 
         .authincation-content {
-            background-color: rgba(255, 255, 255, 0.8); /* Adjust the transparency level as needed */
+            background-color: rgba(255, 255, 255, 0.8);
+            /* Adjust the transparency level as needed */
             border-radius: 10px;
             overflow: hidden;
         }
@@ -65,28 +73,31 @@
             <div class="container">
 
                 <div class="row justify-content-center align-items-center">
-                    
+
                     {{-- <small>
                         <x-jet-validation-errors class="text-sm text-danger w-full" />
                     </small> --}}
                     <div class="col-xl-4 col-md-5">
                         <div class="mini-logo text-center my-3">
                             <a href="{{ route('welcome') }}">
-                                <img width="100" src="{{ asset("/public/web/images/01-ft-logo.png") }}" alt="" />
+                                <img width="100" src="{{ asset('/public/web/images/01-ft-logo.png') }}"
+                                    alt="" />
                             </a>
                             <h4 class="card-title text-white mt-5">Reset Password</h4>
                         </div>
-                        <div class="auth-form card">
+                        <div class="auth-form card" style="border-radius:1.3rem">
                             <x-jet-validation-errors class="text-danger text-sm text-center w-full" />
                             <div class="card-body">
                                 <form class="row g-3" method="POST" action="{{ route('password.email') }}">
                                     @csrf
                                     <div class="form-group col-12">
                                         <label class="form-label">Email</label>
-                                        <input type="email" name="email" class="form-control" placeholder="Your Email">
+                                        <input type="email" name="email" class="form-control"
+                                            placeholder="Your Email">
                                     </div>
                                     <div class="text-center  col-12 mt-4">
-                                        <button type="submit" class="btn btn-primary btn-block">Email Password Reset Link</button>
+                                        <button type="submit" class="btn btn-primary btn-block">Email Password Reset
+                                            Link</button>
                                     </div>
                                 </form>
                                 <div class="new-account mt-3">
@@ -100,9 +111,9 @@
         </div>
     </div>
 
-    <script src="{{ asset('public/mfs/vendor/jquery/jquery.min.js')}}"></script>
-    <script src="{{ asset('public/mfs/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-    <script src="{{ asset('public/mfs/js/scripts.js')}}"></script>
+    <script src="{{ asset('public/mfs/vendor/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('public/mfs/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('public/mfs/js/scripts.js') }}"></script>
 </body>
 
 </html>

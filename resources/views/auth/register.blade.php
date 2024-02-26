@@ -19,9 +19,17 @@
             font-family: 'Montserrat', sans-serif
         }
 
-        a{
+        a {
             color: rgb(255, 187, 0);
         }
+
+        .auth-form .btn {
+            height: 50px;
+            font-weight: 700;
+            border-radius: 2.5rem;
+            box-shadow: none !important;
+        }
+
         #background-container {
             position: fixed;
             top: 0;
@@ -29,10 +37,10 @@
             width: 100%;
             height: 100%;
             background: linear-gradient(to right, rgba(102, 45, 145, 0.619), rgba(145, 45, 115, 0.906)),
-                        url('https://media.istockphoto.com/id/1385118964/photo/shot-of-a-young-woman-using-a-digital-tablet-while-working-in-an-organic-store.jpg?s=612x612&w=0&k=20&c=mFc1p5N1FBnIRKSb6P106J2X98jXqV_IXH4eLFrsbO0=');
-            background-size:cover;
+                url('https://media.istockphoto.com/id/1385118964/photo/shot-of-a-young-woman-using-a-digital-tablet-while-working-in-an-organic-store.jpg?s=612x612&w=0&k=20&c=mFc1p5N1FBnIRKSb6P106J2X98jXqV_IXH4eLFrsbO0=');
+            background-size: cover;
             background-repeat: no-repeat;
-            background-position:left;
+            background-position: left;
         }
 
         .authincation {
@@ -41,8 +49,9 @@
 
         .authincation-content {
             margin-top: 0%;
-            background-color: #ffffff; /* Adjust the transparency level as needed */
-            border-radius: 5px;
+            background-color: #ffffff;
+            /* Adjust the transparency level as needed */
+            border-radius: 2.5rem;
             overflow: hidden;
             margin-bottom: 0%;
             margin-right: 0%;
@@ -67,65 +76,82 @@
                 width: 100%;
             }
         }
+
         .float-alert-bar {
             position: absolute;
             padding: 15px;
             width: 100%;
-            background-color: #dc3545; /* Choose a background color that suits your design */
-            color: #c77878; /* Text color */
+            background-color: #dc3545;
+            /* Choose a background color that suits your design */
+            color: #c77878;
+            /* Text color */
             border-radius: 5px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            z-index: 99999; /* Ensure it appears above other elements */
-            display: block; /* Hide it by default */
+            z-index: 99999;
+            /* Ensure it appears above other elements */
+            display: block;
+            /* Hide it by default */
         }
 
         #policy {
-                margin-top: 4%;
-                font-size: 12px;
+            margin-top: 4%;
+            font-size: 12px;
         }
+
         @media (max-width: 767px) {
             #policy {
                 margin-top: 0%;
                 font-size: 9px;
             }
         }
+
         #form-card {
             padding: 4%;
         }
+
         @media (max-width: 767px) {
             #form-card {
                 padding: 0%;
             }
         }
+
         #form-content {
             padding-top: 4%;
         }
-        #leftSide{
+
+        #leftSide {
             padding-top: 0%;
         }
-            #slogan-text{
-                font-size:18px;
-            }
-            #id-text{
-                font-size:14px;
-                margin-bottom: 2%;
-            }
+
+        #slogan-text {
+            font-size: 18px;
+        }
+
+        #id-text {
+            font-size: 14px;
+            margin-bottom: 2%;
+        }
+
         @media (max-width: 767px) {
-            #form-content{
+            #form-content {
                 padding-top: 0%;
             }
-            #create-text{
-                font-size:14px;
+
+            #create-text {
+                font-size: 14px;
             }
-            #leftSide{
+
+            #leftSide {
                 padding-top: 0%;
                 margin-bottom: 2%;
             }
-            #slogan-text{
-                font-size:14px;
+
+            #slogan-text {
+                font-size: 14px;
             }
-            #id-text{
-                font-size:10px;
+
+            #id-text {
+                font-size: 10px;
             }
         }
     </style>
@@ -141,10 +167,12 @@
                     <div class="text-center">
                         <div class="logo">
                             <a href="{{ route('welcome') }}">
-                                <img width="170" src="{{ asset("/public/web/images/01-ft-logo.png") }}" alt="">
+                                <img width="170" src="{{ asset('/public/web/images/01-ft-logo.png') }}"
+                                    alt="">
                             </a>
                         </div>
-                        <h4 class="text-white" style="margin-top:2rem" id="slogan-text">Financial Inclusion for All!</h4>
+                        <h4 class="text-white" style="margin-top:2rem" id="slogan-text">Financial Inclusion for All!
+                        </h4>
                         <p class="text-white mb-4" id="id-text">Welcome Back!</p>
                     </div>
                 </div>
@@ -152,59 +180,78 @@
                     <div class="authincation-content">
                         <div class="row no-gutters">
                             <div id="form-card">
-                                <div class="auth-form">
+                                <div class="auth-form" style="border-radius:1.5rem">
                                     <div class="w-full">
-                                        <h2 id="create-text" style="color: #792db8" class="text-center mb-2"> <b>Create an Account</b> </h2>
-                                        <p style="color: #792db8" class="text-center">Already have an account? <a class="text-warning" href="{{ route('login') }}">Sign in</a></p>
+                                        <h2 id="create-text" style="color: #792db8" class="text-center mb-2"> <b>Create
+                                                an Account</b> </h2>
+                                        <p style="color: #792db8" class="text-center">Already have an account? <a
+                                                class="text-warning" href="{{ route('login') }}">Sign in</a></p>
                                     </div>
-                                    <form id="form-content" method="POST" class="text-white" action="{{ route('register') }}">
+                                    <form id="form-content" method="POST" class="text-white"
+                                        action="{{ route('register') }}">
                                         @csrf
                                         <div style="display: flex; gap: 0px; width: 100%">
                                             <div class="col-6">
                                                 <label class="text-dark mb-1"><strong>First Name</strong></label>
-                                                <input name="fname" required type="text" class="form-control" placeholder="Your First Name" value="{{ old('fname') }}">
+                                                <input name="fname" required type="text" class="form-control"
+                                                    placeholder="Your First Name" value="{{ old('fname') }}">
                                             </div>
                                             <div class="col-6">
                                                 <label class="text-dark mb-1"><strong>Last Name</strong></label>
-                                                <input name="lname" required type="text" class="form-control" placeholder="Your Last Name" value="{{ old('lname') }}">
+                                                <input name="lname" required type="text" class="form-control"
+                                                    placeholder="Your Last Name" value="{{ old('lname') }}">
                                             </div>
                                         </div>
                                         <div class="">
                                             <div class="col-12">
                                                 <label class="text-dark mb-1"><strong>Email</strong></label>
-                                                <input name="email" required type="email" class="form-control" placeholder="yourname@email.com" value="{{ old('email') }}">
+                                                <input name="email" required type="email" class="form-control"
+                                                    placeholder="yourname@email.com" value="{{ old('email') }}">
                                             </div>
                                             <div class="col-12">
                                                 <label class="text-dark mb-1"><strong>Phone</strong></label>
-                                                <input name="phone" required type="phone" class="form-control" minlength="10" maxlength="10" placeholder="097" value="{{ old('phone') }}">
+                                                <input name="phone" required type="phone" class="form-control"
+                                                    minlength="10" maxlength="10" placeholder="097"
+                                                    value="{{ old('phone') }}">
                                             </div>
                                             <div class="col-12">
                                                 <label class="text-dark mb-1"><strong>Password</strong></label>
-                                                <input name="password" required autocomplete="new-password" type="password" class="form-control">
+                                                <input name="password" required autocomplete="new-password"
+                                                    type="password" class="form-control">
                                             </div>
                                             <div class="text-left px-3 mt-4">
-                                                <button style="background-color:#792db8; box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;" type="submit" class="btn btn-block text-white text-lg">Create Account</button>
+                                                <button
+                                                    style="background-color:#792db8; box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;"
+                                                    type="submit" class="btn btn-block text-white text-lg">Create
+                                                    Account</button>
                                                 @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
-                                                <div id="policy" class="form-check text-dark">
-                                                    <input type="checkbox" name="terms" class="form-check-input" id="termsCheckbox" checked>
-                                                    <label class="form-check-label font-w400" for="termsCheckbox">By creating an account, you agree to Mighty Finance Solution
-                                                        <a target="_blank" href="{{ route('terms') }}" class="underline text-sm text-gray-600 hover:text-gray-900">Terms of Service</a>
-                                                        and
-                                                        <a target="_blank" href="{{ route('pp') }}" class="underline text-sm text-gray-600 hover:text-gray-900">Privacy Policy</a>
-                                                    </label>
-                                                </div>
+                                                    <div id="policy" class="form-check text-dark">
+                                                        <input type="checkbox" name="terms" class="form-check-input"
+                                                            id="termsCheckbox" checked>
+                                                        <label class="form-check-label font-w400"
+                                                            for="termsCheckbox">By creating an account, you agree to
+                                                            Mighty Finance Solution
+                                                            <a target="_blank" href="{{ route('terms') }}"
+                                                                class="underline text-sm text-gray-600 hover:text-gray-900">Terms
+                                                                of Service</a>
+                                                            and
+                                                            <a target="_blank" href="{{ route('pp') }}"
+                                                                class="underline text-sm text-gray-600 hover:text-gray-900">Privacy
+                                                                Policy</a>
+                                                        </label>
+                                                    </div>
                                                 @endif
                                             </div>
                                         </div>
                                     </form>
-                                    
+
                                     <script>
                                         // Retrieve values from local storage and set them in the form fields
-                                        document.addEventListener('DOMContentLoaded', function () {
+                                        document.addEventListener('DOMContentLoaded', function() {
                                             const form = document.getElementById('form-content');
-                                    
+
                                             // Loop through each input field and set its value from local storage if available
-                                            Array.from(form.elements).forEach(function (element) {
+                                            Array.from(form.elements).forEach(function(element) {
                                                 if (element.type !== 'submit' && element.name) {
                                                     const storedValue = localStorage.getItem(element.name);
                                                     if (storedValue !== null) {
@@ -212,16 +259,16 @@
                                                     }
                                                 }
                                             });
-                                    
+
                                             // Add an event listener to update local storage when input values change
-                                            form.addEventListener('input', function (event) {
+                                            form.addEventListener('input', function(event) {
                                                 if (event.target.type !== 'submit' && event.target.name) {
                                                     localStorage.setItem(event.target.name, event.target.value);
                                                 }
                                             });
                                         });
                                     </script>
-                                    
+
                                 </div>
                             </div>
                         </div>
@@ -242,4 +289,5 @@
     <script src="{{ asset('public/theme/js/deznav-init.js') }}"></script>
 
 </body>
+
 </html>
