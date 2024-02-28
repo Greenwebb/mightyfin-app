@@ -569,7 +569,7 @@
                         </div>
                     </div>
 
-                    <div class="col-xxl-12 col-xl-12 col-lg-6">
+                    {{-- <div class="col-xxl-12 col-xl-12 col-lg-6">
                         <div class="card">
                             <div class="card-header">
                                 <h4 class="card-title">Loan Calculator</h4>
@@ -579,47 +579,12 @@
                                     <div class="col-12">
                                         <label class="form-label">Principal (ZMW)</label>
                                         <div class="input-group">
-                                            {{-- <select class="form-select" name="method">
-                          <option value="ZMW">ZMW</option>
-                          <option value="master">Euro</option>
-                        </select> --}}
                                             <input type="text" name="currency_amount" class="form-control"
                                                 placeholder="0.00" id="amountInput" value="100"
                                                 contentEditable='true' data-mask='K #,##0.00' />
                                         </div>
                                     </div>
-                                    {{--
-                    <div class="col-12">
-                      <label class="form-label">Duration</label>
-                      <div class="input-group">
-                        <select class="form-select" name="method">
-                          <option value="Months">Months</option>
-                          <option value="Years">Years</option>
-                        </select>
-                        <input
-                          type="text"
-                          name="currency_amount"
-                          class="form-control"
-                          placeholder="2"
-                        />
-                      </div>
-                    </div> --}}
-
-                                    {{-- <p class="mb-0">
-                      1 USD ~ 0.000088 BTC
-                      <a href="#">Expected rate <br />No extra fees</a>
-                    </p> --}}
-
-                                    {{-- <button
-                      type="submit"
-                      name="submit"
-                      class="btn btn-block"
-                      style="background: #662d91"
-                      disabled
-                    >
-                    <span>Check Now</span>
-                    <span class="icon" id="disabledIcon">&#128683;</span>
-                    </button> --}}
+                                        
 
                                     <div style="">
                                         <div class="range-slider">
@@ -643,7 +608,7 @@
                                 </form>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                     {{-- <div class="col-xxl-12 col-xl-12">
               <div class="card">
                 <div class="card-header">
