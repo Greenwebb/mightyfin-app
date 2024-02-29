@@ -929,7 +929,7 @@
                                                         <div class="input-group duration-input">
                                                             <span class="btn btn-secondary"
                                                                 onclick="decreaseDuration()">-</span>
-                                                            <input type="number" id="durationInput"
+                                                            <input type="number" name="duration" id="durationInput"
                                                                 class="form-control text-center bg-purple"
                                                                 value="1" min="1" max="60">
                                                             <span class=" btn btn-secondary"
@@ -1259,9 +1259,9 @@
                 parseInt(newValue) + parseInt(principal);
                 $('#payback_value').text(my_returns.toFixed(2));
                 $('#monthly_repay').text(my_returns.toFixed(2) / newValue);
-            }else{
-                alert('Please choose a loan type');
             }
+        }else{
+            alert('Please choose a loan type');
         }
     }
 
@@ -1284,6 +1284,29 @@
         $('.is_loading').show();
     }
 
+    // Event listener for range input changes
+    function updateOutputValue(value) {
+        var currentValue = $('#durationInput').val();
+        var numericValue = parseInt(currentValue);
+        var newValue = numericValue + 1;
+        $('#durationInput').val(newValue);
+        var my_returns = (parseInt(value) * rate) * parseInt(newValue) + parseInt(value);
+        $('#payback_value').text(my_returns.toFixed(2));
+        $('#monthly_repay').text(my_returns.toFixed(2) / newValue);
+        checker(); // Call your checker function
+    }
+
+    // Event listener for number input changes
+    function updateRangeValue(value) {
+        var currentValue = $('#durationInput').val();
+        var numericValue = parseInt(currentValue);
+        var newValue = numericValue + 1;
+        $('#durationInput').val(newValue);
+        var my_returns = (parseInt(value) * rate) * parseInt(newValue) + parseInt(value);
+        $('#payback_value').text(my_returns.toFixed(2));
+        $('#monthly_repay').text(my_returns.toFixed(2) / newValue);
+        checker(); // Call your checker function
+    }
     // Get all elements with the specified class
     var svgContainers = document.querySelectorAll('.svg-container');
 
