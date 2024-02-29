@@ -806,18 +806,18 @@
 
                                 <div id="loan_products" class="row row-cols-2 row-cols-lg-2 g-4">
                                     
+                                    @forelse ($products as $item)
                                     <div class="col">
-                                        <label onclick="selectCard(this)" class="card h-70 py-2 custom-radio selected-card">
-                                            <input type="radio" name="loan_type" value="1" class="d-none"
-                                                checker() checked />
+                                        <label onclick="selectCard(this)" class="card h-70 py-2 custom-radio {{ $item->status == 0 ? 'disabled-card' : '' }}">
+                                            <input type="radio" name="loan_type" value="{{ $item->id }}" class="d-none"
+                                                checker()/>
                                             <div class="radio-btn">
                                                 <div class="content">
-                                                    <div class="mb-2">
-                                                        <img width="50px"
-                                                            src="{{ asset('public/web/images/1.svg') }}" />
-                                                    </div>
-                                                    <h2>GRZ Loan</h2>
-                                                    <p class="skill">Civil Servant (Available)</p>
+                                                    <div class="mb-2 text-xs" style="width: 5px; height: 5px;">
+                                                        {{-- {!! $item->icon !!} --}}
+                                                    </div>                                                    
+                                                    <h2>{{ ucwords($item->description) }}</h2>
+                                                    <p class="skill">{{ $item->description }} {{ $item->status == 1 ? '(Available)' : '(coming soon)' }} </p>
                                                     <span class="check-icon">
                                                         <span class="icon"></span>
                                                     </span>
@@ -825,8 +825,10 @@
                                             </div>
                                         </label>
                                     </div>
+                                    @empty
+                                    @endforelse
 
-                                    <div class="col">
+                                    {{-- <div class="col">
                                         <label class="card h-70 py-2 custom-radio disabled-card">
                                             <input type="radio" name="loan_type" value="1" class="d-none"
                                                 checker() />
@@ -844,7 +846,7 @@
                                                 </div>
                                             </div>
                                         </label>
-                                    </div>
+                                    </div> --}}
                                     
                                 </div>
 
