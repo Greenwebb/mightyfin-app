@@ -979,14 +979,16 @@
                             <button type="button"
                                 class="btn btn-dark mt-4 text-white float-start back mt-0 rounded-3">Go
                                 Back</button>
-                            <button type="submit"
+                            <button onclick="showLoader()" type="submit"
                                 class="btn btn-primary float-end next mt-4 confirm">Continue</button>
 
                             <!-- /NEXT BUTTON-->
                         </div>
                         <!-- /col -->
                     </div>
-                    <br><br>
+                    <br>
+                    <div class="is_loading" id="preloader"><i>.</i><i>.</i><i>.</i></div>
+                    <br>
 
                 </form>
                 <!-- /main content -->
@@ -1001,6 +1003,7 @@
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 {{-- <script src="{{ asset('public/js/zan/dist/zangdar.min.js')}}"></script> --}}
 <script type="text/javascript">
+    $('.is_loading').hide();
     $(document).ready(function() {
         var stepCount = 0;
         var principal = 0;
@@ -1270,6 +1273,10 @@
         }else{
             alert('Please choose a loan type');
         }
+    }
+
+    function showLoader(){
+        $('.is_loading').show();
     }
 
     // Get all elements with the specified class
