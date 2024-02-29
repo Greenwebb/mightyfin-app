@@ -895,7 +895,8 @@
                                                 <div class="row justify-content-center">
                                                     <div class="col-12">
                                                         <h4 class="text-center text-secondary mt-2 mb-1"
-                                                            style="position: relative;">Duration<button
+                                                            style="position: relative;">Duration
+                                                            {{-- <button
                                                                 class="lazy-felix lazy-felix-download-btn"
                                                                 data-name="Duration"><svg
                                                                     xmlns="http://www.w3.org/2000/svg"
@@ -921,7 +922,8 @@
                                                                         rx="2.92739" ry="4.7215"
                                                                         transform="rotate(14.6303 17.552 5.95842)"
                                                                         fill="#7A7A7A" fill-opacity="0.7"></ellipse>
-                                                                </svg></button></h4>
+                                                                </svg></button> --}}
+                                                            </h4>
                                                     </div>
                                                     <div class="col-12">
                                                         <div class="input-group duration-input">
@@ -1244,7 +1246,7 @@
     }
 
     function decreaseDuration() {
-        if(rate !== undefined){
+        if(rate !== null){
             var currentValue = $('#durationInput').val();
             var numericValue = parseInt(currentValue);
             if (numericValue > 1) {
@@ -1261,7 +1263,7 @@
     }
 
     function increaseDuration() {
-        if(rate !== undefined){
+        if(rate !== null){
             var currentValue = $('#durationInput').val();
             var numericValue = parseInt(currentValue);
             var newValue = numericValue + 1;
