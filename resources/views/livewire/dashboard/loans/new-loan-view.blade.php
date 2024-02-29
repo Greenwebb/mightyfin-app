@@ -981,7 +981,7 @@
                             <button type="button"
                                 class="btn btn-dark mt-4 text-white float-start back mt-0 rounded-3">Go
                                 Back</button>
-                            <button onclick="showLoader()" type="submit"
+                            <button id="finalcontinue" onclick="showLoader()" type="submit"
                                 class="btn btn-primary float-end next mt-4 confirm">Continue</button>
 
                             <!-- /NEXT BUTTON-->
@@ -1006,6 +1006,8 @@
 {{-- <script src="{{ asset('public/js/zan/dist/zangdar.min.js')}}"></script> --}}
 <script type="text/javascript">
     $('.is_loading').hide();
+    $('#finalcontinue').hide();
+    
     $(document).ready(function() {
         var stepCount = 0;
         var principal = 0;
@@ -1181,7 +1183,8 @@
     // }
 
     function selectCard(selectedLabel) {
-        // alert(rate);
+        
+        $('#finalcontinue').show();
         // Get the value of the selected radio button
         var selectedRadioButton = selectedLabel.querySelector('input[type="radio"]');
         var selectedLoanProductID = selectedRadioButton.value;
