@@ -805,9 +805,9 @@
                                 <small class="text-danger" id="loanProdValidText"></small>
 
                                 <div id="loan_products" class="row row-cols-2 row-cols-lg-2 g-4">
+                                    
                                     <div class="col">
-
-                                        <label class="card h-70 py-2 custom-radio selected-card">
+                                        <label onclick="selectCard(this)" class="card h-70 py-2 custom-radio selected-card">
                                             <input type="radio" name="loan_type" value="1" class="d-none"
                                                 checker() checked />
                                             <div class="radio-btn">
@@ -825,6 +825,7 @@
                                             </div>
                                         </label>
                                     </div>
+
                                     <div class="col">
                                         <label class="card h-70 py-2 custom-radio disabled-card">
                                             <input type="radio" name="loan_type" value="1" class="d-none"
@@ -844,6 +845,7 @@
                                             </div>
                                         </label>
                                     </div>
+                                    
                                 </div>
 
                             </div>
@@ -864,11 +866,11 @@
                                                             <input value="1"
                                                                 oninput="this.nextElementSibling.value = this.value"
                                                                 onclick="checker()" step="50" type="range"
-                                                                min="10000" max="2000000" style="width:100%;"
+                                                                style="width:100%;"
                                                                 id="slidatious" title="Slide for amount">
+
                                                             <input name="amount" id="update_side"
                                                                 oninput="checker()" step="50" value="10000"
-                                                                min="10000" max="2000000"
                                                                 style="outline: none;border-top-style: hidden; border-right-style: hidden; border-left-style: hidden; border-bottom-style: hidden; background-color: #792db8; display: block; font-size: 20px;font-weight: bold;color: #fff;text-align: center;width: 100%; border: 1px #eaff0000 solid;"
                                                                 class="output form-control" type="number">
                                                             <output></output>
@@ -948,19 +950,20 @@
                                         <div class="border-dotted-yellow">
                                             <div class="row">
                                                 <div class="col">
-                                                    <p class="text-center  text-secondary font-weight-bold">Total
-                                                        Repayment</p>
-                                                    <p class="text-center text-secondary">K51000.00</p>
+                                                    <p class="text-center  text-secondary font-weight-bold">
+                                                        Total Repayment
+                                                    </p>
+                                                    <p id="payback_value" class="text-center text-secondary">K51000.00</p>
                                                 </div>
                                                 <div class="col">
                                                     <p class="text-center  text-secondary font-weight-bold">Monthly
                                                         Repayment</p>
-                                                    <p class="text-center text-secondary">K51000.00</p>
+                                                    <p id="monthly_repay" class="text-center text-secondary">K51000.00</p>
                                                 </div>
                                                 <div class="col">
                                                     <p class="text-center  text-secondary font-weight-bold">Next
                                                         Repayment Date</p>
-                                                    <p class="text-center text-secondary">02/05/2024</p>
+                                                    <p id="nxt_repay_date" class="text-center text-secondary">02/05/2024</p>
                                                 </div>
                                             </div>
 
@@ -974,7 +977,7 @@
                             <button type="button"
                                 class="btn btn-dark mt-4 text-white float-start back mt-0 rounded-3">Go
                                 Back</button>
-                            <button type="button"
+                            <button type="submit"
                                 class="btn btn-primary float-end next mt-4 confirm">Continue</button>
 
                             <!-- /NEXT BUTTON-->
@@ -1018,33 +1021,11 @@
         $(".next").on({
             click: function() {
                 stepCount++;
-
-                /*var getValue = $(this).parents(".row").find(".card").hasClass("active-card");
-
-                if (!principalVal.value) {
-                    principalText.textContent = 'Please enter amount you want to borrow';
-                    return false;
-                }
-
-                if (selectedLoanProduct === null) {
-                    loanProdValidText.textContent = 'Please select a loan product to continue';
-                    return false;
-                }
-                if (getValue) {
-                    $("#progressBar").find(".active").next().addClass("active");
-                    $("#alertBox").addClass("d-none");
-                    $(this).parents(".row").fadeOut("slow", function() {
-                        $(this).next(".row").fadeIn("slow");
-                    });
-
-                } else {*/
                 $("#progressBar").find(".active").next().addClass("active");
                 $("#alertBox").addClass("d-none");
                 $(this).parents(".row").fadeOut("slow", function() {
                     $(this).next(".row").fadeIn("slow");
                 });
-                // $("#alertBox").removeClass("d-none");
-                //}
             }
         });
         // back button
@@ -1079,55 +1060,50 @@
         });
 
 
-        $(".card").on({
-            click: function() {
-                // Remove the 'selected-card' class from all labels
-                var labels = document.querySelectorAll('.card');
-                labels.forEach(function(label) {
-                    label.classList.remove('selected-card');
-                });
+        // $(".card").on({
+        //     click: function() {
+        //         // Remove the 'selected-card' class from all labels
+        //         var labels = document.querySelectorAll('.card');
+        //         labels.forEach(function(label) {
+        //             label.classList.remove('selected-card');
+        //         });
 
-                // Add the 'selected-card' class to the clicked label
-                this.classList.add('selected-card');
+        //         // Add the 'selected-card' class to the clicked label
+        //         this.classList.add('selected-card');
 
-                // Additional code to get the details of the selected loan product ID from the database
-                var selectedLoanProductID = $(this).find('input[type="radio"]').val();
-                fetch(`api/get-loan-product-details/${selectedLoanProductID}`)
-                    .then(response => response.json())
-                    .then(data => {
-                        console.log(data.max_loan_duration);
+        //         // Additional code to get the details of the selected loan product ID from the database
+        //         var selectedLoanProductID = $(this).find('input[type="radio"]').val();
+        //         fetch(`api/get-loan-product-details/${selectedLoanProductID}`)
+        //             .then(response => response.json())
+        //             .then(data => {
+        //             // console.log(data.max_loan_duration);
 
-                        // Update the UI with the retrieved details
-                        var sliderValue = $(this).val();
-                        rate = data.def_loan_interest;
-                        duration = data.def_loan_duration;
-                        var my_returns = (parseInt(principal) * data.def_loan_interest) *
-                            parseInt(data.default_loan_duration) + parseInt(principal);
+        //             // Update the UI with the retrieved details
+        //             var sliderValue = $(this).val();
+        //             rate = data.def_loan_interest;
+        //             duration = data.def_loan_duration;
+        //             var my_returns = (parseInt(principal) * data.def_loan_interest) *
+        //                 parseInt(data.default_loan_duration) + parseInt(principal);
 
-                        // Update a display element with the current value
-                        $('#payback_value').text('Payback amount of: K' + my_returns.toFixed(
-                            2));
-                        $('#principal_value').text('Borrowing: K' + principal);
-                        $('#interest_value').text('Interest Rate: ' + data.def_loan_interest);
-                        $('#slider_value').text('Payback in ' + data.def_loan_duration +
-                            ' Months');
-                        $('#slider_input').attr('max', data.max_loan_duration);
-
-
-
-                        data.services_fees.forEach(element => {
-                            // Create element under the service charges div
-                            $('#service_charge').text(data.services_fees.service_charge
-                                .name + ' ' + data.services_fees.service_charge
-                                .value);
-                        });
-
-                    })
-                    .catch(error => {
-                        console.error('Error fetching loan product details:', error);
-                    });
-            }
-        });
+        //             // Update a display element with the current value
+        //             $('#payback_value').text('Payback amount of: K' + my_returns.toFixed(2));
+        //             $('#principal_value').text('Borrowing: K' + principal);
+        //             $('#interest_value').text('Interest Rate: ' + data.def_loan_interest);
+        //             $('#slider_value').text('Payback in ' + data.def_loan_duration + ' Months');
+        //             $('#slider_input').attr('max', data.max_loan_duration);
+                    
+        //             if(data.services_fees !== undefined){
+        //                 data.services_fees.forEach(element => {
+        //                     $('#service_charge').text(data.services_fees.service_charge
+        //                     .name + ' ' + data.services_fees.service_charge
+        //                     .value);
+        //                 });
+        //             }
+        //         }).catch(error => {
+        //             console.error('Error fetching loan product details:', error);
+        //         });
+        //     }
+        // });
 
 
         // Get the input element by its ID
@@ -1159,7 +1135,6 @@
 
             // Get the current value of the range input
             var sliderValue = $(this).val();
-
             var my_returns = (parseInt(principal) * 0.21) * parseInt(sliderValue) + parseInt(principal);
 
             $('#payback_value').text('Payback amount of: K' + my_returns.toFixed(2));
@@ -1168,8 +1143,6 @@
             $('#slider_value').text('Payback in ' + sliderValue + ' Months');
         });
     });
-
-
 
     const slider_input = document.getElementById('slider_input'),
         slider_thumb = document.getElementById('slider_thumb'),
@@ -1200,42 +1173,103 @@
     //     selectedLabel.classList.add('selected-card');
     // }
 
-    // function selectCard(selectedLabel) {
-    //     alert(rate);
-    //     // Get the value of the selected radio button
-    //     var selectedRadioButton = selectedLabel.querySelector('input[type="radio"]');
-    //     var selectedLoanProductID = selectedRadioButton.value;
+    function selectCard(selectedLabel) {
+        // alert(rate);
+        // Get the value of the selected radio button
+        var selectedRadioButton = selectedLabel.querySelector('input[type="radio"]');
+        var selectedLoanProductID = selectedRadioButton.value;
 
-    //     // Make an AJAX request to the server to get details
-    //     fetch(`api/get-loan-product-details/${selectedLoanProductID}`)
-    //         .then(response => response.json())
-    //         .then(data => {
-    //             console.log(data); // Display the details in the console
-    //             // Update the UI with the retrieved details
-    //             updateUI(data);
-    //         })
-    //         .catch(error => {
-    //             console.error('Error fetching loan product details:', error);
-    //         });
+        // Make an AJAX request to the server to get details
+        fetch(`api/get-loan-product-details/${selectedLoanProductID}`)
+            .then(response => response.json())
+            .then(data => {
+                // console.log(data); // Display the details in the console
+                // Update the UI with the retrieved details
+                updateUI(data);
+            })
+            .catch(error => {
+                console.error('Error fetching loan product details:', error);
+            });
 
-    //     // Remove the 'selected-card' class from all labels
-    //     var labels = document.querySelectorAll('.card');
-    //     labels.forEach(function (label) {
-    //         label.classList.remove('selected-card');
-    //     });
+        // Remove the 'selected-card' class from all labels
+        var labels = document.querySelectorAll('.card');
+        labels.forEach(function (label) {
+            label.classList.remove('selected-card');
+        });
 
-    //     // Add the 'selected-card' class to the clicked label
-    //     selectedLabel.classList.add('selected-card');
-    // }
+        // Add the 'selected-card' class to the clicked label
+        selectedLabel.classList.add('selected-card');
+    }
 
-    // function updateUI(data) {
-    //     // Update your UI with the retrieved loan product details
-    //     // For example, you can update HTML elements with the data.
-    //     // Replace the following lines with your specific logic.
-    //     document.getElementById('loanProductName').textContent = data.name;
-    //     document.getElementById('loanProductInterest').textContent = data.interest;
-    //     // Add more lines for other details as needed.
-    // }
+    function updateUI(data) {
+        // update sliders
+        $('#slidatious').attr('max', data.max_principal_amount);
+        $('#slidatious').attr('min', data.min_principal_amount);
+        $('#update_side').attr('max', data.max_principal_amount);
+        $('#update_side').attr('min', data.min_principal_amount);
+
+        $('#durationInput').attr('max', data.max_loan_duration);
+        $('#durationInput').attr('min', data.min_loan_duration);
+        
+        // Calculate CRB - Loan Formulae
+        principal = $('#slidatious').val();
+        rate = data.def_loan_interest;
+        duration = $('#durationInput').val();
+        
+        var my_returns = (parseInt(principal) * data.def_loan_interest) *
+            parseInt(duration) + parseInt(principal);
+
+        // Update a display element with the current value
+        $('#payback_value').text(my_returns.toFixed(2));
+        $('#monthly_repay').text(my_returns.toFixed(2) / duration);
+
+        // Get the current date
+        var currentDate = new Date();
+        // Add 30 days to the current date
+        var futureDate = new Date(currentDate.getTime() + (30 * 24 * 60 * 60 * 1000));
+        $('#nxt_repay_date').text(futureDate);
+                
+        if(data.services_fees !== undefined){
+            data.services_fees.forEach(element => {
+                $('#service_charge').text(data.services_fees.service_charge
+                .name + ' ' + data.services_fees.service_charge
+                .value);
+            });
+        }
+    }
+
+    function decreaseDuration() {
+        if(rate !== undefined){
+            var currentValue = $('#durationInput').val();
+            var numericValue = parseInt(currentValue);
+            if (numericValue > 1) {
+                var newValue = numericValue - 1;
+                $('#durationInput').val(newValue);
+                var my_returns = (parseInt(principal) * rate) *
+                parseInt(newValue) + parseInt(principal);
+                $('#payback_value').text(my_returns.toFixed(2));
+                $('#monthly_repay').text(my_returns.toFixed(2) / newValue);
+            }else{
+                alert('Please choose a loan type');
+            }
+        }
+    }
+
+    function increaseDuration() {
+        if(rate !== undefined){
+            var currentValue = $('#durationInput').val();
+            var numericValue = parseInt(currentValue);
+            var newValue = numericValue + 1;
+            $('#durationInput').val(newValue);
+            var my_returns = (parseInt(principal) * rate) *
+                parseInt(newValue) + parseInt(principal);
+            $('#payback_value').text(my_returns.toFixed(2));
+            $('#monthly_repay').text(my_returns.toFixed(2) / newValue);
+        }else{
+            alert('Please choose a loan type');
+        }
+    }
+
     // Get all elements with the specified class
     var svgContainers = document.querySelectorAll('.svg-container');
 
