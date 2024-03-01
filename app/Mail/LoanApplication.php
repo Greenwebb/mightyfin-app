@@ -36,10 +36,10 @@ class LoanApplication extends Mailable
                 'file_mime' => 'application/pdf',
             ],
         ];
-        
+
         $this->sms = [
             'message' => 'Hello '.auth()->user()->fname.',\nCongratulations! Your loan application has been applied successfully. 🎉 Before logging into your dashboard to complete the remaining steps, please check your email for important details and instructions.',
-            'phone'   =>  auth()->user()->phone
+            'phone'   =>  '26'.auth()->user()->phone
         ];
     }
 
