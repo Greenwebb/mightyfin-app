@@ -854,7 +854,7 @@
 
 
                             {{-- Principal --}}
-                            <div class="bg-secondary card-body" style="border-radius: 1rem">
+                            <div class="bg-secondary card-body finalcontinue" style="border-radius: 1rem">
                                 <div class="row justify-content-center">
                                     <div class="col-12 col-md-12">
                                         <div class="text-center">
@@ -863,16 +863,15 @@
                                                     <h4 class="text-white">Loan Amount</h4>
                                                     <div v class="range" style="margin-bottom: -60px;"
                                                         id="pricipal-slide">
-
                                                         <div class="form-group range__slider">
                                                             <input value="1"
                                                                 oninput="this.nextElementSibling.value = this.value"
-                                                                onclick="checker()" step="50" type="range"
+                                                                onchange="updateOutputValue(this.value)" step="50" type="range"
                                                                 style="width:100%;"
                                                                 id="slidatious" title="Slide for amount">
 
-                                                            <input name="amount" id="update_side"
-                                                                oninput="checker()" step="50" value="10000"
+                                                            <input name="amount" id="update_side" step="50" value="10000"
+                                                                onchange="updateRangeValue(this.value)"
                                                                 style="outline: none;border-top-style: hidden; border-right-style: hidden; border-left-style: hidden; border-bottom-style: hidden; background-color: #792db8; display: block; font-size: 20px;font-weight: bold;color: #fff;text-align: center;width: 100%; border: 1px #eaff0000 solid;"
                                                                 class="output form-control" type="number">
                                                             <output></output>
@@ -887,7 +886,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="mt-1">
+                            <div class="mt-1 finalcontinue">
                                 <div class="row justify-content-center">
                                     <div class="">
                                         <div class="col-12 col-md-12">
@@ -945,7 +944,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="mt-1">
+                            <div class="mt-1 finalcontinue">
                                 <div class="row justify-content-center">
                                     <div class="col-12 col-md-12">
                                         <!-- Your previous code for the duration input -->
@@ -981,8 +980,8 @@
                             <button type="button"
                                 class="btn btn-dark mt-4 text-white float-start back mt-0 rounded-3">Go
                                 Back</button>
-                            <button id="finalcontinue" onclick="showLoader()" type="submit"
-                                class="btn btn-primary float-end next mt-4 confirm">Continue</button>
+                            <button onclick="showLoader()" type="submit"
+                                class="finalcontinue btn btn-primary float-end next mt-4 confirm">Continue</button>
 
                             <!-- /NEXT BUTTON-->
                         </div>
@@ -1006,7 +1005,7 @@
 {{-- <script src="{{ asset('public/js/zan/dist/zangdar.min.js')}}"></script> --}}
 <script type="text/javascript">
     $('.is_loading').hide();
-    $('#finalcontinue').hide();
+    $('.finalcontinue').hide();
     
     $(document).ready(function() {
         var stepCount = 0;
@@ -1184,7 +1183,7 @@
 
     function selectCard(selectedLabel) {
         
-        $('#finalcontinue').show();
+        $('.finalcontinue').show();
         // Get the value of the selected radio button
         var selectedRadioButton = selectedLabel.querySelector('input[type="radio"]');
         var selectedLoanProductID = selectedRadioButton.value;
@@ -1286,25 +1285,19 @@
 
     // Event listener for range input changes
     function updateOutputValue(value) {
-        var currentValue = $('#durationInput').val();
-        var numericValue = parseInt(currentValue);
-        var newValue = numericValue + 1;
-        $('#durationInput').val(newValue);
-        var my_returns = (parseInt(value) * rate) * parseInt(newValue) + parseInt(value);
+        var duration = $('#durationInput').val();
+        var my_returns = (parseInt(value) * rate) * parseInt(duration) + parseInt(value);
         $('#payback_value').text(my_returns.toFixed(2));
-        $('#monthly_repay').text(my_returns.toFixed(2) / newValue);
+        $('#monthly_repay').text(my_returns.toFixed(2) / duration);
         checker(); // Call your checker function
     }
 
     // Event listener for number input changes
     function updateRangeValue(value) {
-        var currentValue = $('#durationInput').val();
-        var numericValue = parseInt(currentValue);
-        var newValue = numericValue + 1;
-        $('#durationInput').val(newValue);
-        var my_returns = (parseInt(value) * rate) * parseInt(newValue) + parseInt(value);
+        var duration = $('#durationInput').val();
+        var my_returns = (parseInt(value) * rate) * parseInt(duration) + parseInt(value);
         $('#payback_value').text(my_returns.toFixed(2));
-        $('#monthly_repay').text(my_returns.toFixed(2) / newValue);
+        $('#monthly_repay').text(my_returns.toFixed(2) / duration);
         checker(); // Call your checker function
     }
     // Get all elements with the specified class
