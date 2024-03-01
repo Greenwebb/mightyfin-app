@@ -20,14 +20,7 @@
                         <input type="hidden" name="borrower_id" value="{{ auth()->user()->id }}">
                         <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
                         <!-- Personal Info -->
-                        <div class="step col-xxl-12" id="step1"  
-                            {{-- data-aos="fade-left"
-                            data-aos-anchor="#example-anchor"
-                            data-aos-startEvent="DOMContentLoaded"
-                            data-aos-offset="500"
-                            data-aos-duration="500" --}}
-                            >
-
+                        <div class="step col-xxl-12" id="step1">
                             <div style="width: 90%" class="d-flex justify-content-between mb-2">
                                 <h5>Profile Details</h5>
                             </div>
@@ -65,10 +58,12 @@
                             <div class="row mb-4">
                                 <div class="form-group col-md-6">
                                     <label for="phone">PHONE NUMBER
-                                        <small class="text-success">(eg. starting with: 975, 772, 965)</small></label>
+                                        <small class="text-success">(eg. starting with: 0975, 00772, 965)</small></label>
                                     <div class="input-group">
                                         <select class="form-control" name="pcode">
-                                            <option value="260">+260</option>
+                                            <option value="26" data-thumbnail="https://png.pngtree.com/thumb_back/fw800/background/20221004/pngtree-waving-zambia-flag-background-image_1466907.jpg">
+                                                +26
+                                            </option>
                                         </select>
                                         <input
                                             id="phone"
@@ -77,7 +72,7 @@
                                             data-mask='0000 000 000'
                                             name="phone"
                                             class="form-control"
-                                            placeholder="975 --- ---"
+                                            placeholder="0975 --- ---"
                                         />
                                     </div>
                                     <small id="phoneError" class="text-danger"></small>
@@ -121,9 +116,8 @@
                                         id="gender"
                                         class="form-control"
                                         name="gender"
-                                        {{-- wire:model.defer="state.gender" --}}
                                         >  
-                                        <option> -- GENDER --</option>
+                                        <option value=""> -- GENDER --</option>
                                         <option {{ auth()->user()->gender == 'Male' ? 'selected' : ''}} value="Male">Male</option>
                                         <option {{ auth()->user()->gender == 'Female' ? 'selected' : ''}} value="Female">Female</option>
                                     </select>
@@ -278,6 +272,7 @@
                                 </button>
                             </div>
                         </div>
+                        {{-- !mportant --}}
                         {{-- <div class="step" id="step3">
                             <h4>Guarantor's Information</h4>
                             
@@ -452,10 +447,9 @@
                                 <div class="text-success" id="sendDocResponseText">Pre-approval forms share successfully</div>
                                 <div class="text-danger" id="sendDocResponseText2">Could not send, Please try again</div>
                             </div>
-                            {{-- <small>Please upload a Copy of your <b>NRC(Front & Back)</b>, <b>latest Payslip</b>, <b>3 months Bank statement</b> and <b>passport size photo</b></small> --}}
+                            
                             <div class="row col-md-12 col-lg-12" style="">
-                                <div class="file-uploader col-xxl-6 col-xl-6 col-lg-6 border" style="border: 1px #d3d1d1; padding:2%;">
-                                    <!-- Use a label for file input and add a Font Awesome icon -->
+                                <div class="file-uploader col-xxl-6 col-xl-6 col-lg-6 border" style="border: 1px #d3d1d1; padding:2%;"> 
                                     <input type="file" value="{{ $meta->uploads->where('name', 'payslip_file')->first()->path }}" class="file-input visually-hidden" id="fileInput3" accept=".pdf, .doc, .docx" name="payslip_file">
                                     <label for="fileInput3" class="file-input-label">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" fill="currentColor" class="bi bi-cloud-upload" viewBox="0 0 16 16">
@@ -464,8 +458,6 @@
                                         </svg>
                                         <span>Upload Latest Payslip</span>
                                     </label>
-                                    
-                                    <!-- Uploaded file list -->
                                     <div class="pt-2">
                                         <ul class="file-list-2" id="fileList-3"></ul>
                                         @if ($meta->uploads->where('name', 'payslip_file')->isNotEmpty())
@@ -790,6 +782,7 @@
       if (!nrcInput.value) {
           nrcError.textContent = 'Identification ID is required';
       }
+      
       if (!genderInput.value) {
           genderError.textContent = 'Gender is required';
       } 
@@ -842,14 +835,14 @@
       var tpinExists = "{{$meta->uploads->where('name', 'tpin_file')->first()->path}}";
 
       // In this example, we'll check if the input is not empty
-      if (fileInput.value === '' && nrcExists === null) {
+      if (fileInput.value === '' && nrcExists === '') {
         nrcFileError.textContent = 'Please upload copy of national ID';
       }
         //   if (!fileInput2.value && tpinExists === 'null') {
         //     fiileInput2Error.textContent = 'Please upload copy of Tpin';
         //   }
         // !fileInput2.value && tpinExists === 'null' || 
-      if (!fileInput.value && nrcExists === null) {
+      if (fileInput.value === '' && nrcExists === '') {
           return false;
       } else {
   
@@ -965,7 +958,7 @@
         contactHRError.textContent = 'HR contact is required';
       }
 
-        //   ---- supervisor
+        //   ---- supervisor !mportant
     //   if (!supervisorLastName.value) {
     //     supLNError.textContent = 'Supervisor First Name';
     //   }
@@ -1085,29 +1078,29 @@
         preapprovalError.textContent = '';
       
       // we'll check if the input is not empty
-      if (!fileInput3.value && payslipExists == null) {
+      if (!fileInput3.value && payslipExists === '') {
         // alert('1');
         payslipError.textContent = 'Please upload copy of Latest Payslip';
       }
 
-      if (!fileInput4.value && bankExists == null ) {
+      if (!fileInput4.value && bankExists === '' ) {
         // alert('2');
         bankstatementError.textContent = 'Please upload copy of Bank Statement';
       }
-      if (!fileInput5.value && passportExists == null) {
+      if (!fileInput5.value && passportExists === '') {
         // alert('3');
         passportError.textContent = 'Please upload a Passport size photo';
       }
-      if (!fileInput6.value && preapprovalExists == null) {
+      if (!fileInput6.value && preapprovalExists === '') {
         // alert('4');
         preapprovalError.textContent = 'Please upload signed Preapproval form';
       }
 
         //   !fileInput7.value || letterExists === 'null' --letter of introduction
-      if (!fileInput3.value && payslipExists === null ||  
-        !fileInput4.value && bankExists === null || 
-        !fileInput5.value && passportExists === null || 
-        !fileInput6.value && preapprovalExists === null
+      if (!fileInput3.value && payslipExists === '' ||  
+        !fileInput4.value && bankExists === '' || 
+        !fileInput5.value && passportExists === '' || 
+        !fileInput6.value && preapprovalExists === ''
         ){
           return false;
       } else {
