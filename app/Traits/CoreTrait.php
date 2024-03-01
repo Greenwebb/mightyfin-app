@@ -19,13 +19,9 @@ trait CoreTrait{
             
         if( $loan_product->interest_types->first()->interest_type->first()->name == 'Percentage' ){
             $def_int = (float)$loan_product->def_loan_interest;
-            
             // return number_format($interest, 2, '.', '');
         }else{
             return 'K '.$loan_product->def_loan_interest;
         }
-
-
-
     }
 }

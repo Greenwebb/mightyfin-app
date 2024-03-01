@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use App\Traits\SMSTrait;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -9,9 +10,9 @@ use Illuminate\Queue\SerializesModels;
 
 class LoanApplication extends Mailable
 {
-    use Queueable, SerializesModels;
+    use Queueable, SerializesModels, SMSTrait;
 
-    public $data, $files;
+    public $data, $files, $sms;
 
     /**
      * Create a new message instance.
@@ -23,12 +24,6 @@ class LoanApplication extends Mailable
     public function __construct($data)
     {
         $this->data = $data;
-        // $this->file = [
-        //     'file_path' => public_path('forms/preapproval-mfs.docx'), // use public_path() to get the correct absolute path
-        //     'file_name' => 'Pre-Approval-Form.docx',
-        //     'file_mime' => 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
-        //     // other data for the email template
-        // ];
         $this->files = [
             [
                 'file_path' => public_path('forms/preapproval-mfs.docx'),
@@ -40,7 +35,11 @@ class LoanApplication extends Mailable
                 'file_name' => 'MRS - Letter of Introduction.pdf',
                 'file_mime' => 'application/pdf',
             ],
-            // Add more attachments as needed
+        ];
+        
+        $this->sms = [
+            'message' => 'Hello '.auth()->user()->fname.',\nCongratulations! Your loan application has been applied successfully. 🎉 Before logging into your dashboard to complete the remaining steps, please check your email for important details and instructions.',
+            'phone'   =>  auth()->user()->phone
         ];
     }
 
@@ -51,21 +50,17 @@ class LoanApplication extends Mailable
      */
     public function build()
     {
-        // return $this->view('email.loan-email')
-        //     ->attach($this->file['file_path'], [
-        //         'as' => $this->file['file_name'],
-        //         'mime' => $this->file['file_mime'],
-        //     ]);
+        // Send SMS
+        $this->send_sms($this->sms);
 
+        // Send Email
         $message = $this->view('email.loan-email');
-
         foreach ($this->files as $file) {
             $message->attach($file['file_path'], [
                 'as' => $file['file_name'],
                 'mime' => $file['file_mime'],
             ]);
         }
-
         return $message;
     }
 }
