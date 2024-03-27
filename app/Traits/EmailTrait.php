@@ -7,7 +7,7 @@ use App\Mail\LoanApplication;
 use App\Mail\LoanEquiry;
 use App\Models\Application;
 use App\Models\User;
-use App\Notifications\BTFLoanRequest;
+use App\Notifications\LoanRequest;
 use App\Notifications\LoanRemainder;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Notification;
@@ -35,7 +35,7 @@ trait EmailTrait{
         $admin = User::first();
         $me = auth()->user();
         try {
-            Notification::send($admin, new BTFLoanRequest($data));
+            Notification::send($admin, new LoanRequest($data));
             return true;
         } catch (\Throwable $th) {
             return false;
@@ -63,9 +63,9 @@ trait EmailTrait{
         } catch (\Throwable $th) {
             return $th;
         }
-    } 
+    }
 
-    
+
     // This email send a contact message from contact us page /////////////
     public function send_loan_remainder($data, $user){
         try {
@@ -75,7 +75,7 @@ trait EmailTrait{
             return $th;
         }
     }
-    
+
     // This email send a attachement of Preaproval Forms /////////////
     public function send_pre_approval_forms($email){
         try {
@@ -112,7 +112,7 @@ trait EmailTrait{
         }
 
     }
-    
+
     public function send_loan_declined_notification($data){
         $borrower = User::where('id', $data['user_id'])->first();
         $me = auth()->user();

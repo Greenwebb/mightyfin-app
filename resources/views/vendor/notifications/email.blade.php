@@ -69,7 +69,7 @@
 
 <body style="margin: 0; padding: 0; word-spacing: normal; background-color: #ac73be7c; background-image: url('https://img.freepik.com/premium-photo/purple-gradient-wall-blank-studio-room-plain-studio-background_570543-7218.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;">
   <div role="article" aria-roledescription="email" lang="en" style="text-size-adjust: 100%; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; background-color: linear-gradient(to right, #792db8, #912d73);">
-    
+
 
       <!-- Outer Table -->
       <table role="presentation" style="width: 100%; border: none; border-spacing: 0;">
@@ -114,7 +114,7 @@
                     @endforeach
                   </p>
 
-                
+
                 </td>
               </tr>
 
