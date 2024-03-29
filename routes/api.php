@@ -20,13 +20,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/user', function (Request $request) {
+        return $request->user();
+    });
+
+    // More authenticated API routes go here...
 });
+
+//Mobile app
 Route::apiResource('apply-loan', LoanRequestController::class);
 Route::post('register', [UserAuthenticationController::class, 'register']);
 Route::post('login', [UserAuthenticationController::class, 'login']);
-Route::post('verify-otp', [OTPController::class, 'verifyOTP']);
+Route::get('request-otp', [OTPController::class, 'requestOTP']);
+Route::get('verify-otp', [OTPController::class, 'verifyOTP']);
 
 
 
