@@ -16,7 +16,6 @@
         "livewire/livewire": "^2.5",
         "maatwebsite/excel": "^3.1",
         "phpoffice/phpword": "^1.0",
-        "samuelmwangiw/africastalking-laravel": "^0.4.6",
         "spatie/laravel-permission": "^5.5"
     },
     "require-dev": {
