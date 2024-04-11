@@ -33,7 +33,7 @@ class LoanApplication extends Mailable
             [
                 'file_path' => public_path('forms/letter-of-introduction-mfs.docx'),
                 'file_name' => 'MRS - Letter of Introduction.pdf',
-                'file_mime' => 'application/pdf',
+                'file_mime' => 'application/pdf'
             ],
         ];
 
