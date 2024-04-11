@@ -33,16 +33,12 @@ Route::apiResource('apply-loan', LoanRequestController::class);
 Route::post('register', [UserAuthenticationController::class, 'register']);
 Route::post('login', [UserAuthenticationController::class, 'login']);
 Route::get('request-otp', [OTPController::class, 'requestOTP']);
-Route::get('verify-otp', [OTPController::class, 'verifyOTP']);
-
-
-
+Route::post('verify-otp', [OTPController::class, 'verifyOTP']);
 Route::post('update-profile', [UserController::class, 'updateProfile']);
 Route::post('change-password', [UserController::class, 'updatePassword']);
 Route::post('upload-files', [UserController::class, 'uploadFiles']);
 
-
-// Functions
+// Web app
 Route::post('request-for-loan', [LoanApplicationController::class, 'store']);
 Route::post('apply-for-loan', [LoanApplicationController::class, 'new_loan']);
 Route::get('get-my-loans/{id}', [LoanRequestController::class, 'getMyLoans']);

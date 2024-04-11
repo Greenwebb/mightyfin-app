@@ -16,6 +16,8 @@ class VerifyCsrfToken extends Middleware
         'continue-loan',
         'update-role',
         'api/verify-otp',
-        'verify-otp'
+        'verify-otp',
+        'register',
+        'login'
     ];
 }
